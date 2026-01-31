@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mera PDF Tool - All in One Free Tools</title>
+    <title>Nishant PDF Tools - All in One Free Tools</title>
     
-    <!-- Google Ads Ke Liye Jagah (Baad mein yahan apna code dalna) -->
+    <!-- Google Ads Ke Liye Jagah -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            font-family: 'Poppins', 'Segoe UI', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
         }
         
         /* Navigation */
         .navbar {
-            background: rgba(255,255,255,0.95);
+            background: rgba(255,255,255,0.98);
             padding: 15px 20px;
             box-shadow: 0 2px 20px rgba(0,0,0,0.1);
             position: sticky;
@@ -36,23 +36,47 @@
             flex-wrap: wrap;
         }
         
-        .logo {
+        /* Logo Section with Tagline */
+        .logo-section {
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-size: 26px;
-            font-weight: bold;
-            color: #333;
+            gap: 15px;
             cursor: pointer;
         }
         
-        .logo img {
-            height: 50px;
-            width: 50px;
-            border-radius: 50%;
-            object-fit: cover;
+        .logo-section img {
+            height: 65px;
+            width: 65px;
+            border-radius: 12px;
+            object-fit: contain;
+            background: white;
+            padding: 5px;
             border: 3px solid #667eea;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+        
+        .logo-main {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .logo-tagline {
+            font-size: 14px;
+            color: #666;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-top: 3px;
         }
         
         .nav-links {
@@ -76,7 +100,6 @@
             background: #667eea;
             color: white;
             border-color: #764ba2;
-            transform: translateY(-2px);
         }
         
         /* Main Layout */
@@ -153,7 +176,7 @@
         /* Upload Area */
         .upload-area {
             border: 3px dashed #667eea;
-            padding: 40px;
+            padding: 50px;
             text-align: center;
             margin: 25px 0;
             border-radius: 15px;
@@ -223,7 +246,6 @@
         .btn-primary:disabled {
             background: #ccc;
             cursor: not-allowed;
-            transform: none;
         }
         
         .btn-secondary {
@@ -243,7 +265,6 @@
             color: #667eea;
         }
         
-        /* Input Fields */
         .text-input {
             width: 100%;
             max-width: 400px;
@@ -252,7 +273,6 @@
             border-radius: 10px;
             margin: 10px 0;
             font-size: 16px;
-            transition: border-color 0.3s;
         }
         
         .text-input:focus {
@@ -279,7 +299,6 @@
             background: #e0e0e0;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
         }
         
         .progress-fill {
@@ -292,7 +311,6 @@
             justify-content: center;
             color: white;
             font-weight: bold;
-            font-size: 14px;
         }
         
         /* Tools Grid */
@@ -310,14 +328,12 @@
             text-align: center;
             cursor: pointer;
             transition: all 0.3s;
-            border: 2px solid transparent;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
         .tool-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-            border-color: #667eea;
         }
         
         .tool-icon {
@@ -336,100 +352,9 @@
         .tool-desc {
             color: #666;
             font-size: 14px;
-            line-height: 1.5;
         }
         
-        /* Ad Placeholders */
-        .ad-placeholder {
-            background: #f0f0f0;
-            border: 2px dashed #ccc;
-            padding: 20px;
-            text-align: center;
-            margin: 30px 0;
-            border-radius: 10px;
-            color: #999;
-        }
-        
-        /* Features List */
-        .features-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            margin: 30px 0;
-        }
-        
-        .feature-tag {
-            background: rgba(102, 126, 234, 0.1);
-            color: #667eea;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 14px;
-        }
-        
-        /* Footer */
-        footer {
-            background: #2d3748;
-            color: white;
-            padding: 50px 20px;
-            margin-top: 70px;
-            text-align: center;
-        }
-        
-        .footer-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .social-links {
-            margin: 30px 0;
-            font-size: 28px;
-        }
-        
-        .social-links a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-            transition: transform 0.3s;
-            display: inline-block;
-        }
-        
-        .social-links a:hover {
-            transform: translateY(-5px);
-        }
-        
-        .contact-form {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            margin: 30px auto;
-            max-width: 500px;
-            color: #333;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #555;
-        }
-        
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 16px;
-            font-family: inherit;
-        }
-        
+        /* Share Section */
         .share-section {
             background: white;
             padding: 30px;
@@ -461,11 +386,99 @@
         .twitter { background: #1DA1F2; }
         .telegram { background: #0088cc; }
         
+        /* Footer */
+        footer {
+            background: #1a202c;
+            color: white;
+            padding: 50px 20px;
+            margin-top: 70px;
+        }
+        
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+        
+        .footer-section h3 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 20px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+        
+        .footer-section p {
+            margin: 10px 0;
+            line-height: 1.6;
+            color: #cbd5e0;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            transition: all 0.3s;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .social-links a:hover {
+            background: #667eea;
+            transform: translateY(-2px);
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 12px 0;
+            padding: 10px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            border-left: 3px solid #667eea;
+        }
+        
+        .contact-item strong {
+            color: #667eea;
+            min-width: 100px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #a0aec0;
+            font-size: 14px;
+        }
+        
         @media (max-width: 768px) {
+            .logo-section img { height: 50px; width: 50px; }
+            .logo-main { font-size: 22px; }
+            .logo-tagline { font-size: 12px; }
             .nav-container { flex-direction: column; text-align: center; }
-            .nav-links { margin-top: 20px; justify-content: center; }
-            h1 { font-size: 24px; }
-            .card { padding: 25px; }
+            .nav-links { margin-top: 15px; justify-content: center; }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; }
+            .social-links { justify-content: center; }
         }
     </style>
 </head>
@@ -474,15 +487,14 @@
     <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo" onclick="showSection('home')">
-                <!-- YAHAN APNA LOGO YA PHOTO DAALO -->
-                <!-- Method 1: Online Image URL se -->
-                <img src="https://via.placeholder.com/50/667eea/ffffff?text=M" alt="Logo" id="site-logo">
-                
-                <!-- Method 2: Agar apna photo upload kiya hai toh yeh use karo: -->
-                <!-- <img src="logo.png" alt="Mera Logo"> -->
-                
-                <span>Mera PDF Tool</span>
+            <!-- Logo with Tagline -->
+            <div class="logo-section" onclick="showSection('home')">
+                <img src="https://as1.ftcdn.net/v2/jpg/04/74/48/12/1000_F_474481246_0GWr3NV2KGvw5VxeUiKamumfYh32obms.jpg" 
+                     alt="NP Logo">
+                <div class="logo-text">
+                    <span class="logo-main">Nishant PDF Tool</span>
+                    <span class="logo-tagline">⚡ FAST • 🔒 SECURE • 🆓 FREE FOREVER</span>
+                </div>
             </div>
             
             <div class="nav-links">
@@ -495,34 +507,17 @@
         </div>
     </nav>
 
-    <!-- Ad Space Top -->
-    <div class="main-container">
-        <div class="ad-placeholder">
-            📢 Google Ads Yahan Aayenge (Baad Mein Code Paste Karna)
-        </div>
-    </div>
-
     <!-- HOME SECTION -->
     <div class="main-container tool-section active" id="home">
         <div class="card">
-            <h1>🚀 Mera PDF Tool</h1>
-            <p class="subtitle">100% Free, Secure & Fast PDF Tools</p>
-            
-            <div class="features-list">
-                <span class="feature-tag">✅ Free Forever</span>
-                <span class="feature-tag">🔒 Privacy Protected</span>
-                <span class="feature-tag">⚡ No Registration</span>
-                <span class="feature-tag">📱 Mobile Friendly</span>
-                <span class="feature-tag">🌐 Works Offline</span>
-            </div>
+            <h1>🚀 Welcome to Nishant PDF Tool</h1>
+            <p class="subtitle">Professional PDF Tools by Nishant Pohanekar - 100% Free & Secure</p>
             
             <div class="info-box">
                 <div>
                     <strong>Kaise Use Karein?</strong><br>
-                    1. Neeche se tool select karein<br>
-                    2. PDF file upload karein<br>
-                    3. Process karein aur download karein<br>
-                    <em>Note: Files aapke browser mein process hoti hain, server pe nahi jati. Safe hai!</em>
+                    1. Tool select karein → 2. File upload karein → 3. Process & Download<br>
+                    <em>🔒 Privacy Guaranteed: Files aapke browser mein process hoti hain, server pe nahi jati!</em>
                 </div>
             </div>
         </div>
@@ -532,57 +527,52 @@
             <div class="tool-card" onclick="showSection('merge')">
                 <span class="tool-icon">📑</span>
                 <div class="tool-title">Merge PDF</div>
-                <div class="tool-desc">Multiple PDF files ko ek saath jodkar single file banayein</div>
+                <div class="tool-desc">Multiple PDFs ko ek file mein jodiye</div>
             </div>
             
             <div class="tool-card" onclick="showSection('unlock')">
                 <span class="tool-icon">🔓</span>
                 <div class="tool-title">Unlock PDF</div>
-                <div class="tool-desc">Password protected PDF ko unlock karein (password chahiye)</div>
+                <div class="tool-desc">Password protected PDF ko unlock karein</div>
             </div>
             
             <div class="tool-card" onclick="showSection('compress')">
                 <span class="tool-icon">🗜️</span>
                 <div class="tool-title">Compress PDF</div>
-                <div class="tool-desc">PDF file size kam karein bina quality lose kiye</div>
+                <div class="tool-desc">File size kam karein bina quality lose kiye</div>
             </div>
             
             <div class="tool-card" onclick="showSection('split')">
                 <span class="tool-icon">✂️</span>
                 <div class="tool-title">Split PDF</div>
-                <div class="tool-desc">Badi PDF ko chhote parts mein todein</div>
+                <div class="tool-desc">PDF ko specific pages mein alag karein</div>
             </div>
             
             <div class="tool-card" onclick="showSection('rotate')">
                 <span class="tool-icon">🔄</span>
                 <div class="tool-title">Rotate PDF</div>
-                <div class="tool-desc">PDF pages ko 90°, 180° ya 270° ghumayein</div>
+                <div class="tool-desc">Pages ko 90°, 180° ya 270° ghumayein</div>
             </div>
             
             <div class="tool-card" onclick="showSection('remove')">
                 <span class="tool-icon">🗑️</span>
                 <div class="tool-title">Remove Pages</div>
-                <div class="tool-desc">Unwanted pages ko delete karein</div>
+                <div class="tool-desc">Unwanted pages permanently delete karein</div>
             </div>
         </div>
 
         <!-- Share Section -->
         <div class="share-section">
             <h2>📢 Dosto Ke Saath Share Karein</h2>
-            <p>Is useful tool ko apne dosto ke saath share karein:</p>
+            <p>Is useful tool ko apne contacts mein share karein:</p>
             
-            <a href="https://wa.me/?text=🔥%20Check%20karo%20yeh%20FREE%20PDF%20Tool!%0A%0ASab%20PDF%20kaam%20ek%20jagah:%0Ahttps://nishu4ai.github.io/n4pdftool" target="_blank" class="share-btn whatsapp">
-                <span>📱</span> WhatsApp
-            </a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://nishu4ai.github.io/n4pdftool" target="_blank" class="share-btn facebook">
-                <span>📘</span> Facebook
-            </a>
-            <a href="https://twitter.com/intent/tweet?text=🚀%20Free%20PDF%20Tools%20-%20No%20Signup%20Needed!&url=https://nishu4ai.github.io/n4pdftool" target="_blank" class="share-btn twitter">
-                <span>🐦</span> Twitter
-            </a>
-            <a href="https://t.me/share/url?url=https://nishu4ai.github.io/n4pdftool&text=🎯%20Best%20Free%20PDF%20Tools" target="_blank" class="share-btn telegram">
-                <span>✈️</span> Telegram
-            </a>
+            <a href="https://wa.me/?text=🚀%20*Nishant%20PDF%20Tool*%0A%0A✅%20Free%20PDF%20Tools%20Collection%0A✅%20No%20Signup%20Required%0A✅%20Secure%20%26%20Fast%0A%0A👉%20https://nishu4ai.github.io/n4pdftool" target="_blank" class="share-btn whatsapp">📱 WhatsApp</a>
+            
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://nishu4ai.github.io/n4pdftool" target="_blank" class="share-btn facebook">📘 Facebook</a>
+            
+            <a href="https://twitter.com/intent/tweet?text=🚀%20Nishant%20PDF%20Tool%20-%20Best%20Free%20PDF%20Tools&url=https://nishu4ai.github.io/n4pdftool" target="_blank" class="share-btn twitter">🐦 Twitter</a>
+            
+            <a href="https://t.me/share/url?url=https://nishu4ai.github.io/n4pdftool&text=🎯%20*Nishant%20PDF%20Tool*%20-%20All%20PDF%20solutions%20in%20one%20place!" target="_blank" class="share-btn telegram">✈️ Telegram</a>
         </div>
     </div>
 
@@ -590,26 +580,23 @@
     <div class="main-container tool-section" id="merge">
         <div class="card">
             <h1>📑 Merge PDF Files</h1>
-            <p class="subtitle">Multiple PDFs ko ek file mein jodein</p>
+            <p class="subtitle">Multiple PDFs ko ek saath jodiye</p>
             
             <div class="info-box">
                 <div>
-                    <strong>Instructions:</strong> 2 ya zyada PDF files select karein. 
-                    Files uss order mein jodengi jis order mein aapne select kiya.
+                    <strong>Instructions:</strong> 2 ya zyada PDF files select karein. Files uss order mein jodengi jis order mein select kiya.
                 </div>
             </div>
             
             <div class="upload-area" onclick="document.getElementById('mergeInput').click()">
                 <div class="upload-icon">📂</div>
-                <label class="file-input-label">PDF Files Select Karein</label>
+                <label class="file-input-label">PDF Files Select Karein (Multiple)</label>
                 <input type="file" id="mergeInput" accept=".pdf" multiple onchange="showFileNames('mergeInput', 'mergeFiles')">
                 <div class="selected-files" id="mergeFiles">Koi file select nahi ki</div>
             </div>
             
             <center>
-                <button class="btn-primary" onclick="mergePDFs()" id="mergeBtn">
-                    ⚡ Merge Now
-                </button>
+                <button class="btn-primary" onclick="mergePDFs()" id="mergeBtn">⚡ Merge Now</button>
             </center>
             
             <div class="progress-container" id="mergeProgress">
@@ -619,7 +606,7 @@
                 </div>
             </div>
             
-            <button class="btn-secondary" onclick="showSection('home')">← Wapas Home</button>
+            <center><button class="btn-secondary" onclick="showSection('home')">← Wapas Home</button></center>
         </div>
     </div>
 
@@ -627,12 +614,11 @@
     <div class="main-container tool-section" id="unlock">
         <div class="card">
             <h1>🔓 Unlock PDF</h1>
-            <p class="subtitle">Password protected PDF ko unlock karein</p>
+            <p class="subtitle">Password protected PDF ka lock hataiye</p>
             
             <div class="warning-box">
                 <div>
-                    <strong>Important:</strong> Is tool se PDF ka password HATA sakte hain 
-                    (agar aapko password pata ho). Illegal password cracking nahi hota.
+                    <strong>Important:</strong> Yeh tool sirf wo PDF unlock karta hai jiska password aapko pata ho. Illegal cracking nahi hota.
                 </div>
             </div>
             
@@ -646,9 +632,7 @@
             <center>
                 <input type="password" id="pdfPassword" class="text-input" placeholder="PDF Password yahan daalein" style="margin-top: 20px;">
                 <br>
-                <button class="btn-primary" onclick="unlockPDF()" id="unlockBtn">
-                    🔓 Unlock PDF
-                </button>
+                <button class="btn-primary" onclick="unlockPDF()" id="unlockBtn">🔓 Unlock PDF</button>
             </center>
             
             <div class="progress-container" id="unlockProgress">
@@ -658,7 +642,7 @@
                 </div>
             </div>
             
-            <button class="btn-secondary" onclick="showSection('home')">← Wapas Home</button>
+            <center><button class="btn-secondary" onclick="showSection('home')">← Wapas Home</button></center>
         </div>
     </div>
 
@@ -666,12 +650,11 @@
     <div class="main-container tool-section" id="compress">
         <div class="card">
             <h1>🗜️ Compress PDF</h1>
-            <p class="subtitle">PDF file size kam karein</p>
+            <p class="subtitle">PDF file size optimize karein</p>
             
             <div class="info-box">
                 <div>
-                    <strong>Note:</strong> Yeh basic compression hai jo extra data hata deta hai. 
-                    Images quality utni hi rahegi. Heavy compression ke liye advanced tools use karein.
+                    <strong>Note:</strong> Images ki quality same rahegi. Sirf extra metadata remove hoga jo file size ko kam karega.
                 </div>
             </div>
             
@@ -683,19 +666,17 @@
             </div>
             
             <center>
-                <button class="btn-primary" onclick="compressPDF()" id="compressBtn">
-                    🚀 Compress Now
-                </button>
+                <button class="btn-primary" onclick="compressPDF()" id="compressBtn">🚀 Compress Now</button>
             </center>
             
             <div class="progress-container" id="compressProgress">
-                <div class="progress-text">Compressing... This may take a moment</div>
+                <div class="progress-text">Compressing...</div>
                 <div class="progress-bar">
                     <div class="progress-fill" id="compressBar">0%</div>
                 </div>
             </div>
             
-            <button class="btn-secondary" onclick="showSection('home')">← Wapas Home</button>
+            <center><button class="btn-secondary" onclick="showSection('home')">← Wapas Home</button></center>
         </div>
     </div>
 
@@ -707,8 +688,7 @@
             
             <div class="info-box">
                 <div>
-                    <strong>Example:</strong> "1-3, 5" dalne se Page 1,2,3 ek file mein aur 
-                    Page 5 alag file mein banega.
+                    <strong>Example:</strong> "1-3, 5" dalne se Page 1,2,3 ek file mein aur Page 5 alag file mein banega.
                 </div>
             </div>
             
@@ -722,9 +702,7 @@
             <center>
                 <input type="text" id="splitRange" class="text-input" placeholder="e.g., 1-3, 5, 8-10">
                 <br>
-                <button class="btn-primary" onclick="splitPDF()" id="splitBtn">
-                    ✂️ Split Now
-                </button>
+                <button class="btn-primary" onclick="splitPDF()" id="splitBtn">✂️ Split Now</button>
             </center>
             
             <div class="progress-container" id="splitProgress">
@@ -734,7 +712,7 @@
                 </div>
             </div>
             
-            <button class="btn-secondary" onclick="showSection('home')">← Wapas Home</button>
+            <center><button class="btn-secondary" onclick="showSection('home')">← Wapas Home</button></center>
         </div>
     </div>
 
@@ -752,15 +730,13 @@
             </div>
             
             <center>
-                <select id="rotateAngle" class="text-input" style="width: auto; min-width: 200px;">
+                <select id="rotateAngle" class="text-input" style="width: auto; min-width: 250px;">
                     <option value="90">90° Right (Clockwise)</option>
                     <option value="180">180° (Upside Down)</option>
                     <option value="270">270° Left (Anti-clockwise)</option>
                 </select>
                 <br>
-                <button class="btn-primary" onclick="rotatePDF()" id="rotateBtn">
-                    🔄 Rotate Now
-                </button>
+                <button class="btn-primary" onclick="rotatePDF()" id="rotateBtn">🔄 Rotate Now</button>
             </center>
             
             <div class="progress-container" id="rotateProgress">
@@ -770,7 +746,7 @@
                 </div>
             </div>
             
-            <button class="btn-secondary" onclick="showSection('home')">← Wapas Home</button>
+            <center><button class="btn-secondary" onclick="showSection('home')">← Wapas Home</button></center>
         </div>
     </div>
 
@@ -780,13 +756,6 @@
             <h1>🗑️ Remove Pages</h1>
             <p class="subtitle">Unwanted pages delete karein</p>
             
-            <div class="info-box">
-                <div>
-                    <strong>Example:</strong> Agar total 10 pages hain aur aap "2, 4-6" dalenge, 
-                    toh page 2,4,5,6 delete ho jayenge. Baaki 1,3,7,8,9,10 rahenge.
-                </div>
-            </div>
-            
             <div class="upload-area" onclick="document.getElementById('removeInput').click()">
                 <div class="upload-icon">🗑️</div>
                 <label class="file-input-label">PDF Select Karein</label>
@@ -795,11 +764,9 @@
             </div>
             
             <center>
-                <input type="text" id="removePages" class="text-input" placeholder="e.g., 2, 4-6, 9">
+                <input type="text" id="removePages" class="text-input" placeholder="e.g., 2, 4-6, 9 (Delete karne wale pages)">
                 <br>
-                <button class="btn-primary" onclick="removePages()" id="removeBtn">
-                    🗑️ Delete Pages
-                </button>
+                <button class="btn-primary" onclick="removePages()" id="removeBtn">🗑️ Delete Pages</button>
             </center>
             
             <div class="progress-container" id="removeProgress">
@@ -809,78 +776,98 @@
                 </div>
             </div>
             
-            <button class="btn-secondary" onclick="showSection('home')">← Wapas Home</button>
+            <center><button class="btn-secondary" onclick="showSection('home')">← Wapas Home</button></center>
         </div>
     </div>
 
-    <!-- Footer -->
+    <!-- FOOTER with Contact Details -->
     <footer>
         <div class="footer-content">
-            <h2>📞 Contact Us</h2>
-            <p>Koi sawaal ya problem hai? Humse contact karein:</p>
-            
-            <div class="contact-form">
-                <form onsubmit="event.preventDefault(); alert('✅ Message bhej diya gaya! Hum jaldi reply karenge.');">
-                    <div class="form-group">
-                        <label>Aapka Naam</label>
-                        <input type="text" placeholder="Raju Kumar" required>
+            <div class="footer-grid">
+                <!-- About Section -->
+                <div class="footer-section">
+                    <h3>👨‍💻 About Developer</h3>
+                    <p style="font-size: 16px; margin-bottom: 15px;"><strong style="color: white; font-size: 18px;">Nishant Pohanekar</strong></p>
+                    <p>Full Stack Developer & Digital Creator</p>
+                    <p style="margin-top: 15px; font-style: italic; color: #a0aec0;">"Making digital tools accessible for everyone"</p>
+                    
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/i_nishu4/" target="_blank">📸 Instagram</a>
+                        <a href="https://twitter.com/nishu4nishant" target="_blank">🐦 Twitter/X</a>
+                        <a href="https://www.facebook.com/nishu4" target="_blank">📘 Facebook</a>
                     </div>
-                    <div class="form-group">
-                        <label>Email Address</label>
-                        <input type="email" placeholder="raju@email.com" required>
+                </div>
+
+                <!-- Contact Section -->
+                <div class="footer-section">
+                    <h3>📞 Contact Karain</h3>
+                    
+                    <div class="contact-item">
+                        <span>📱</span>
+                        <div>
+                            <strong>WhatsApp:</strong><br>
+                            <a href="https://wa.me/919960803311" style="color: #25D366; text-decoration: none; font-weight: bold;">+91 99608 03311</a>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>Apna Message</label>
-                        <textarea rows="4" placeholder="Kya problem aa rahi hai..." required></textarea>
+                    
+                    <div class="contact-item">
+                        <span>✈️</span>
+                        <div>
+                            <strong>Telegram:</strong><br>
+                            <a href="https://t.me/+919960803311" style="color: #0088cc; text-decoration: none; font-weight: bold;">+91 99608 03311</a>
+                        </div>
                     </div>
-                    <button type="submit" class="btn-primary" style="width: 100%; margin: 0;">
-                        📤 Send Message
-                    </button>
-                </form>
+                    
+                    <div class="contact-item" style="border-left-color: #E4405F;">
+                        <span>📸</span>
+                        <div>
+                            <strong>Instagram:</strong><br>
+                            <a href="https://www.instagram.com/i_nishu4/" target="_blank" style="color: #E4405F; text-decoration: none;">@i_nishu4</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-section">
+                    <h3>🔗 Quick Links</h3>
+                    <p>• <a href="#" onclick="showSection('home')" style="color: #cbd5e0; text-decoration: none;">Home</a></p>
+                    <p>• <a href="#" onclick="showSection('merge')" style="color: #cbd5e0; text-decoration: none;">Merge PDF</a></p>
+                    <p>• <a href="#" onclick="showSection('unlock')" style="color: #cbd5e0; text-decoration: none;">Unlock PDF</a></p>
+                    <p>• <a href="#" onclick="showSection('compress')" style="color: #cbd5e0; text-decoration: none;">Compress PDF</a></p>
+                    <p style="margin-top: 20px; padding: 15px; background: rgba(102, 126, 234, 0.2); border-radius: 8px; text-align: center;">
+                        <a href="https://www.facebook.com/nishu4" target="_blank" style="color: #667eea; font-weight: bold; text-decoration: none;">Facebook pe Follow Karein →</a>
+                    </p>
+                </div>
             </div>
-            
-            <div class="social-links">
-                <a href="#" title="Facebook">📘</a>
-                <a href="#" title="Twitter">🐦</a>
-                <a href="#" title="Instagram">📸</a>
-                <a href="#" title="YouTube">▶️</a>
-                <a href="https://wa.me/919999999999" title="WhatsApp">💬</a>
-            </div>
-            
-            <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #444; font-size: 14px; opacity: 0.8;">
-                <p>© 2025 Mera PDF Tool. All Rights Reserved.</p>
-                <p>Made with ❤️ in India | Free Forever</p>
-                <p style="margin-top: 10px;">
-                    <a href="#" style="color: #667eea; text-decoration: none;">Privacy Policy</a> • 
-                    <a href="#" style="color: #667eea; text-decoration: none;">Terms of Use</a> • 
-                    <a href="#" style="color: #667eea; text-decoration: none;">DMCA</a>
+
+            <div class="footer-bottom">
+                <p style="font-size: 16px; margin-bottom: 10px;">
+                    <strong style="color: white;">Nishant PDF Tool</strong> - Developed with ❤️ by <strong style="color: #667eea;">Nishant Pohanekar</strong>
+                </p>
+                <p>© 2025 All Rights Reserved | Free Forever | Made in India 🇮🇳</p>
+                <p style="margin-top: 10px; font-size: 12px;">
+                    <a href="#" style="color: #718096; text-decoration: none; margin: 0 10px;">Privacy Policy</a>
+                    <a href="#" style="color: #718096; text-decoration: none; margin: 0 10px;">Terms of Service</a>
+                    <a href="#" style="color: #718096; text-decoration: none; margin: 0 10px;">DMCA</a>
                 </p>
             </div>
         </div>
     </footer>
 
-    <!-- PDF-Lib Library -->
     <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
-    
-    <!-- Download Library -->
     <script src="https://unpkg.com/downloadjs@1.4.7"></script>
 
     <script>
-        // Navigation System
+        // Navigation
         function showSection(sectionId) {
-            // Hide all sections
             document.querySelectorAll('.tool-section').forEach(section => {
                 section.classList.remove('active');
             });
-            
-            // Show selected section
             const target = document.getElementById(sectionId);
             if (target) {
                 target.classList.add('active');
                 window.scrollTo(0, 0);
             }
-            
-            // Update nav active state
             document.querySelectorAll('.nav-links a').forEach(link => {
                 link.classList.remove('active');
                 if(link.getAttribute('onclick').includes(sectionId)) {
@@ -889,14 +876,12 @@
             });
         }
 
-        // File Selection Display
         function showFileNames(inputId, displayId) {
             const input = document.getElementById(inputId);
             const display = document.getElementById(displayId);
-            
             if (input.files.length > 0) {
                 const names = Array.from(input.files).map(f => f.name).join(', ');
-                display.textContent = `Selected: ${names}`;
+                display.textContent = `✅ Selected: ${names}`;
                 display.style.color = '#667eea';
                 display.style.fontWeight = 'bold';
             }
@@ -906,7 +891,6 @@
             showFileNames(inputId, displayId);
         }
 
-        // Progress Bar Function
         function updateProgress(barId, percent) {
             const bar = document.getElementById(barId);
             bar.style.width = percent + '%';
@@ -941,11 +925,10 @@
                 
                 updateProgress('mergeBar', 95);
                 const pdfBytes = await mergedPdf.save({ useObjectStreams: true });
-                
                 const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-                download(blob, 'merged-file.pdf', 'application/pdf');
+                download(blob, 'merged-by-nishant.pdf', 'application/pdf');
                 
-                alert('✅ Merge successful! File download ho rahi hai.');
+                alert('✅ Merge successful! File download ho rahi hai.\n\nCreated by Nishant Pohanekar');
                 updateProgress('mergeBar', 100);
                 
             } catch (err) {
@@ -959,7 +942,7 @@
             }
         }
 
-        // UNLOCK PDF (Remove Password)
+        // UNLOCK PDF
         async function unlockPDF() {
             const input = document.getElementById('unlockInput');
             const password = document.getElementById('pdfPassword').value;
@@ -984,7 +967,6 @@
                 const { PDFDocument } = PDFLib;
                 const arrayBuffer = await input.files[0].arrayBuffer();
                 
-                // Try to load with password
                 let pdf;
                 try {
                     pdf = await PDFDocument.load(arrayBuffer, { password: password });
@@ -993,18 +975,13 @@
                 }
                 
                 updateProgress('unlockBar', 70);
-                
-                // Save without password (auto-encrypt false)
-                const pdfBytes = await pdf.save({ 
-                    useObjectStreams: true,
-                    addDefaultPage: false
-                });
-                
+                const pdfBytes = await pdf.save({ useObjectStreams: true });
                 updateProgress('unlockBar', 100);
-                const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-                download(blob, 'unlocked-file.pdf', 'application/pdf');
                 
-                alert('✅ PDF unlock ho gaya! Ab yeh bina password ke open hoga.');
+                const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+                download(blob, 'unlocked-by-nishant.pdf', 'application/pdf');
+                
+                alert('✅ PDF unlock ho gaya!\n\nDeveloper: Nishant Pohanekar');
                 
             } catch (err) {
                 alert('❌ Error: ' + err.message);
@@ -1017,7 +994,7 @@
             }
         }
 
-        // COMPRESS PDF (Basic optimization)
+        // COMPRESS PDF
         async function compressPDF() {
             const input = document.getElementById('compressInput');
             const btn = document.getElementById('compressBtn');
@@ -1028,8 +1005,6 @@
                 return;
             }
             
-            const originalSize = (input.files[0].size / 1024 / 1024).toFixed(2);
-            
             btn.disabled = true;
             progress.style.display = 'block';
             
@@ -1039,9 +1014,6 @@
                 const arrayBuffer = await input.files[0].arrayBuffer();
                 const pdf = await PDFDocument.load(arrayBuffer);
                 
-                updateProgress('compressBar', 50);
-                
-                // Remove unnecessary metadata and optimize
                 pdf.setTitle('');
                 pdf.setAuthor('');
                 pdf.setSubject('');
@@ -1050,25 +1022,13 @@
                 pdf.setCreator('');
                 
                 updateProgress('compressBar', 80);
-                
-                // Save with maximum compression settings
-                const pdfBytes = await pdf.save({ 
-                    useObjectStreams: true,
-                    addDefaultPage: false
-                });
-                
-                const newSize = (pdfBytes.length / 1024 / 1024).toFixed(2);
-                const saved = ((originalSize - newSize) / originalSize * 100).toFixed(1);
-                
+                const pdfBytes = await pdf.save({ useObjectStreams: true });
                 updateProgress('compressBar', 100);
-                const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-                download(blob, 'compressed-file.pdf', 'application/pdf');
                 
-                if (saved > 0) {
-                    alert(`✅ Compressed! Original: ${originalSize}MB → New: ${newSize}MB (${saved}% saved)`);
-                } else {
-                    alert(`ℹ️ File already optimized! Size: ${newSize}MB`);
-                }
+                const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+                download(blob, 'compressed-by-nishant.pdf', 'application/pdf');
+                
+                alert('✅ Compression successful!\n\nTool by: Nishant Pohanekar');
                 
             } catch (err) {
                 alert('❌ Error: ' + err.message);
@@ -1104,10 +1064,6 @@
                 
                 const pagesToExtract = parsePageRange(rangeStr, pdf.getPageCount());
                 
-                if (pagesToExtract.length === 0) {
-                    throw new Error('Koi valid pages nahi mile!');
-                }
-                
                 for (let i = 0; i < pagesToExtract.length; i++) {
                     updateProgress('splitBar', Math.round(((i + 1) / pagesToExtract.length) * 90));
                     const [copiedPage] = await newPdf.copyPages(pdf, [pagesToExtract[i]]);
@@ -1117,7 +1073,7 @@
                 updateProgress('splitBar', 100);
                 const pdfBytes = await newPdf.save();
                 const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-                download(blob, 'split-file.pdf', 'application/pdf');
+                download(blob, 'split-by-nishant.pdf', 'application/pdf');
                 
                 alert(`✅ Split successful! ${pagesToExtract.length} pages nikale gaye.`);
                 
@@ -1162,7 +1118,7 @@
                 const pdfBytes = await pdf.save();
                 const blob = new Blob([pdfBytes], { type: 'application/pdf' });
                 const angleText = angle === 90 ? '90' : angle === 180 ? '180' : '270';
-                download(blob, `rotated-${angleText}.pdf`, 'application/pdf');
+                download(blob, `rotated-${angleText}-by-nishant.pdf`, 'application/pdf');
                 
                 alert(`✅ ${angle}° rotate ho gaya!`);
                 
@@ -1202,10 +1158,6 @@
                 const allPages = Array.from({length: pdf.getPageCount()}, (_, i) => i);
                 const pagesToKeep = allPages.filter(p => !pagesToRemove.includes(p));
                 
-                if (pagesToKeep.length === 0) {
-                    throw new Error('Saare pages delete nahi kar sakte!');
-                }
-                
                 for (let i = 0; i < pagesToKeep.length; i++) {
                     updateProgress('removeBar', Math.round(((i + 1) / pagesToKeep.length) * 90));
                     const [copiedPage] = await newPdf.copyPages(pdf, [pagesToKeep[i]]);
@@ -1215,9 +1167,9 @@
                 updateProgress('removeBar', 100);
                 const pdfBytes = await newPdf.save();
                 const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-                download(blob, 'removed-pages.pdf', 'application/pdf');
+                download(blob, 'modified-by-nishant.pdf', 'application/pdf');
                 
-                alert(`✅ ${pagesToRemove.length} pages delete ho gaye! ${pagesToKeep.length} pages bache hain.`);
+                alert(`✅ ${pagesToRemove.length} pages delete ho gaye!`);
                 
             } catch (err) {
                 alert('❌ Error: ' + err.message);
@@ -1230,7 +1182,7 @@
             }
         }
 
-        // Helper: Parse Page Range (e.g., "1-3,5" -> [0,1,2,4])
+        // Helper: Parse Page Range
         function parsePageRange(rangeStr, maxPages) {
             const pages = new Set();
             const parts = rangeStr.split(',');
@@ -1249,12 +1201,6 @@
             });
             
             return Array.from(pages).sort((a, b) => a - b);
-        }
-
-        // Initialize: Check for URL hash
-        if (window.location.hash) {
-            const section = window.location.hash.substring(1);
-            showSection(section);
         }
     </script>
 </body>
