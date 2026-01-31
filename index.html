@@ -1,96 +1,690 @@
-index.html
 <!DOCTYPE html>
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mera PDF Tool - Free Online</title>
+    <title>Mera PDF Tool - All in One</title>
     <style>
-        /* Yeh CSS hai - Bas colors yahan se change karo */
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        * {
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            box-sizing: border-box;
         }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        /* Navigation Bar */
+        .navbar {
+            background: rgba(255,255,255,0.95);
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .logo img {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 600;
+            padding: 5px 15px;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+        
+        .nav-links a:hover {
+            background: #667eea;
+            color: white;
+        }
+        
+        .nav-links a.active {
+            background: #667eea;
+            color: white;
+        }
+        
+        /* Main Container */
         .container {
             max-width: 800px;
-            margin: 0 auto;
+            margin: 30px auto;
             background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
         }
+        
         h1 {
             color: #333;
             text-align: center;
+            margin-bottom: 10px;
         }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        /* Tool Box */
         .tool-box {
-            border: 2px dashed #ccc;
+            border: 3px dashed #ccc;
             padding: 40px;
             text-align: center;
             margin: 20px 0;
+            border-radius: 10px;
+            background: #f9f9f9;
+            transition: border-color 0.3s;
+        }
+        
+        .tool-box:hover {
+            border-color: #667eea;
+        }
+        
+        input[type="file"] {
+            margin: 20px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
             border-radius: 5px;
         }
+        
         button {
             background: #667eea;
             color: white;
             border: none;
             padding: 15px 30px;
             font-size: 16px;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
+            margin: 5px;
+            transition: transform 0.2s;
         }
+        
         button:hover {
-            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        /* Progress Bar */
+        .progress-container {
+            display: none;
+            margin: 20px 0;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            width: 0%;
+            transition: width 0.3s;
+            text-align: center;
+            color: white;
+            line-height: 20px;
+            font-size: 12px;
+        }
+        
+        /* Tool Sections */
+        .tool-section {
+            display: none;
+        }
+        
+        .tool-section.active {
+            display: block;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .feature-card {
+            background: #f0f0f0;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .feature-card:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 30px;
+            margin-top: 50px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .social-links {
+            margin: 20px 0;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 24px;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            color: #333;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        /* Share Buttons */
+        .share-section {
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: #f0f0f0;
+            border-radius: 10px;
+        }
+        
+        .share-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .whatsapp { background: #25D366; }
+        .facebook { background: #1877F2; }
+        .twitter { background: #1DA1F2; }
+        
+        /* Page specific styles */
+        .page-range-input {
+            margin: 10px;
+            padding: 10px;
+            width: 200px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .info-text {
+            background: #e3f2fd;
+            padding: 15px;
+            border-left: 4px solid #2196F3;
+            margin: 15px 0;
+            border-radius: 5px;
+            text-align: left;
         }
     </style>
 </head>
 <body>
-    <div class="container">
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <!-- YAHAN APNA LOGO DAALO (Image URL ya Rocket emoji) -->
+                <img src="https://via.placeholder.com/40" alt="Logo" id="logo-img">
+                <span>Mera PDF Tool</span>
+            </div>
+            <div class="nav-links">
+                <a href="#" class="active" onclick="showTool('home')">Home</a>
+                <a href="#" onclick="showTool('merge')">Merge</a>
+                <a href="#" onclick="showTool('split')">Split</a>
+                <a href="#" onclick="showTool('rotate')">Rotate</a>
+                <a href="#" onclick="showTool('remove')">Delete Pages</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home / All Tools Section -->
+    <div class="container tool-section active" id="home">
         <h1>🚀 Mera PDF Tool</h1>
-        <p style="text-align: center;">Apni PDF files yahan upload karo</p>
+        <p class="subtitle">Sabhi PDF tools ek jagah - Free aur Secure</p>
         
-        <div class="tool-box">
-            <input type="file" id="pdfInput" accept=".pdf" multiple>
-            <br><br>
-            <button onclick="mergePDFs()">PDF Merge Karo</button>
+        <div class="features">
+            <div class="feature-card" onclick="showTool('merge')">
+                <div class="feature-icon">📑</div>
+                <h3>Merge PDF</h3>
+                <p>Multiple PDFs ko ek banaye</p>
+            </div>
+            
+            <div class="feature-card" onclick="showTool('split')">
+                <div class="feature-icon">✂️</div>
+                <h3>Split PDF</h3>
+                <p>PDF ko alag-alag pages mein tode</p>
+            </div>
+            
+            <div class="feature-card" onclick="showTool('rotate')">
+                <div class="feature-icon">🔄</div>
+                <h3>Rotate PDF</h3>
+                <p>Pages ko ghumaye (90°, 180°)</p>
+            </div>
+            
+            <div class="feature-card" onclick="showTool('remove')">
+                <div class="feature-icon">🗑️</div>
+                <h3>Remove Pages</h3>
+                <p>Unwanted pages delete kare</p>
+            </div>
         </div>
 
-        <div id="result"></div>
+        <!-- Social Share -->
+        <div class="share-section">
+            <h3>Share Karna Na Bhoole!</h3>
+            <p>Dosto ke saath share karein:</p>
+            <a href="https://wa.me/?text=Check%20out%20this%20free%20PDF%20Tool:%20https://nishu4ai.github.io/n4pdftool" target="_blank" class="share-btn whatsapp">WhatsApp</a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://nishu4ai.github.io/n4pdftool" target="_blank" class="share-btn facebook">Facebook</a>
+            <a href="https://twitter.com/intent/tweet?text=Free%20PDF%20Tools&url=https://nishu4ai.github.io/n4pdftool" target="_blank" class="share-btn twitter">Twitter</a>
+        </div>
     </div>
 
-    <!-- Yeh library hai PDF process karne ke liye -->
+    <!-- MERGE TOOL -->
+    <div class="container tool-section" id="merge">
+        <h1>📑 PDF Merge</h1>
+        <p class="subtitle">Multiple PDF files ek saath jodein</p>
+        
+        <div class="info-text">
+            💡 Tip:2 ya zyada PDF files select karein. Woh order mein merge hongi jis order mein select kiye.
+        </div>
+        
+        <div class="tool-box">
+            <input type="file" id="mergeInput" accept=".pdf" multiple>
+            <br>
+            <button onclick="mergePDFs()" id="mergeBtn">PDF Merge Karo</button>
+            
+            <!-- Progress Bar -->
+            <div class="progress-container" id="mergeProgress">
+                <p>Processing...</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="mergeProgressBar">0%</div>
+                </div>
+            </div>
+        </div>
+        <button onclick="showTool('home')">← Wapas Home</button>
+    </div>
+
+    <!-- SPLIT TOOL -->
+    <div class="container tool-section" id="split">
+        <h1>✂️ PDF Split</h1>
+        <p class="subtitle">PDF ko specific pages mein alag karein</p>
+        
+        <div class="info-text">
+            💡 Example: Agar aapke PDF mein 10 pages hain aur aap "1-3, 5" dalenge, toh page 1-3 ek file mein aur page 5 alag file mein banega.
+        </div>
+        
+        <div class="tool-box">
+            <input type="file" id="splitInput" accept=".pdf">
+            <br>
+            <input type="text" id="splitRange" class="page-range-input" placeholder="Pages: 1-3, 5, 7-9">
+            <br>
+            <button onclick="splitPDF()" id="splitBtn">PDF Split Karo</button>
+            
+            <div class="progress-container" id="splitProgress">
+                <p>Splitting...</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="splitProgressBar">0%</div>
+                </div>
+            </div>
+        </div>
+        <button onclick="showTool('home')">← Wapas Home</button>
+    </div>
+
+    <!-- ROTATE TOOL -->
+    <div class="container tool-section" id="rotate">
+        <h1>🔄 PDF Rotate</h1>
+        <p class="subtitle">PDF pages ko rotate karein (90°, 180°, 270°)</p>
+        
+        <div class="tool-box">
+            <input type="file" id="rotateInput" accept=".pdf">
+            <br>
+            <select id="rotateAngle" style="padding: 10px; margin: 10px; font-size: 16px;">
+                <option value="90">90 Degrees (Right)</option>
+                <option value="180">180 Degrees (Upside Down)</option>
+                <option value="270">270 Degrees (Left)</option>
+            </select>
+            <br>
+            <button onclick="rotatePDF()" id="rotateBtn">Rotate Karo</button>
+            
+            <div class="progress-container" id="rotateProgress">
+                <p>Rotating...</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="rotateProgressBar">0%</div>
+                </div>
+            </div>
+        </div>
+        <button onclick="showTool('home')">← Wapas Home</button>
+    </div>
+
+    <!-- REMOVE PAGES TOOL -->
+    <div class="container tool-section" id="remove">
+        <h1>🗑️ Remove Pages</h1>
+        <p class="subtitle">PDF se specific pages delete karein</p>
+        
+        <div class="info-text">
+            💡 Example: "2, 4-6" dalne se page 2 aur pages 4,5,6 delete ho jayenge, baaki sab rahega.
+        </div>
+        
+        <div class="tool-box">
+            <input type="file" id="removeInput" accept=".pdf">
+            <br>
+            <input type="text" id="removePages" class="page-range-input" placeholder="Delete pages: 2, 4-6">
+            <br>
+            <button onclick="removePages()" id="removeBtn">Pages Delete Karo</button>
+            
+            <div class="progress-container" id="removeProgress">
+                <p>Processing...</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="removeProgressBar">0%</div>
+                </div>
+            </div>
+        </div>
+        <button onclick="showTool('home')">← Wapas Home</button>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h3>Contact Us</h3>
+            <p>Koi problem hai? Humse contact karein:</p>
+            
+            <!-- Simple Contact Form -->
+            <div class="contact-form">
+                <form onsubmit="event.preventDefault(); alert('Message bhej diya!');">
+                    <input type="text" placeholder="Aapka Naam" required>
+                    <input type="email" placeholder="Email ID" required>
+                    <textarea rows="3" placeholder="Apna message yahan likhein..." required></textarea>
+                    <button type="submit" style="width: 100%;">Bhejo</button>
+                </form>
+            </div>
+            
+            <div class="social-links">
+                <p>Follow karein:</p>
+                <!-- Yahan apne social media links daalein -->
+                <a href="#">📘</a>
+                <a href="#">🐦</a>
+                <a href="#">📸</a>
+                <a href="#">💬</a>
+            </div>
+            
+            <p style="margin-top: 20px; font-size: 12px; opacity: 0.8;">
+                © 2025 Mera PDF Tool. All rights reserved.<br>
+                Made with ❤️ in India
+            </p>
+        </div>
+    </footer>
+
     <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
-    
     <script>
+        // Navigation Function
+        function showTool(toolName) {
+            // Hide all sections
+            document.querySelectorAll('.tool-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            if(toolName === 'home') {
+                document.getElementById('home').classList.add('active');
+            } else {
+                document.getElementById(toolName).classList.add('active');
+            }
+            
+            // Update navigation active state
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        // Progress Bar Function
+        function updateProgress(id, percent) {
+            document.getElementById(id).style.width = percent + '%';
+            document.getElementById(id).textContent = percent + '%';
+        }
+
+        // MERGE FUNCTION
         async function mergePDFs() {
-            const input = document.getElementById('pdfInput');
+            const input = document.getElementById('mergeInput');
             if (input.files.length < 2) {
                 alert('Kam se kam 2 PDF files select karo!');
                 return;
             }
 
-            // Yeh code PDF merge karta hai
-            const { PDFDocument } = PDFLib;
-            const mergedPdf = await PDFDocument.create();
+            document.getElementById('mergeProgress').style.display = 'block';
+            document.getElementById('mergeBtn').disabled = true;
+            
+            try {
+                const { PDFDocument } = PDFLib;
+                const mergedPdf = await PDFDocument.create();
+                
+                for (let i = 0; i < input.files.length; i++) {
+                    updateProgress('mergeProgressBar', Math.round((i / input.files.length) * 50));
+                    const arrayBuffer = await input.files[i].arrayBuffer();
+                    const pdf = await PDFDocument.load(arrayBuffer);
+                    const copiedPages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
+                    copiedPages.forEach((page) => mergedPdf.addPage(page));
+                }
+                
+                updateProgress('mergeProgressBar', 80);
+                const pdfBytes = await mergedPdf.save();
+                updateProgress('mergeProgressBar', 100);
+                
+                const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = 'merged-file.pdf';
+                link.click();
+                
+                alert('Merge ho gaya! File download ho rahi hai.');
+            } catch (err) {
+                alert('Error: ' + err.message);
+            } finally {
+                document.getElementById('mergeProgress').style.display = 'none';
+                document.getElementById('mergeBtn').disabled = false;
+                updateProgress('mergeProgressBar', 0);
+            }
+        }
 
-            for (let file of input.files) {
-                const arrayBuffer = await file.arrayBuffer();
-                const pdf = await PDFDocument.load(arrayBuffer);
-                const copiedPages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
-                copiedPages.forEach((page) => mergedPdf.addPage(page));
+        // SPLIT FUNCTION
+        async function splitPDF() {
+            const input = document.getElementById('splitInput');
+            const rangeStr = document.getElementById('splitRange').value;
+            
+            if (!input.files[0] || !rangeStr) {
+                alert('PDF file aur page numbers dono dalna zaruri hai!');
+                return;
             }
 
-            const pdfBytes = await mergedPdf.save();
-            const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-            const link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);
-            link.download = 'merged-file.pdf';
-            link.click();
+            document.getElementById('splitProgress').style.display = 'block';
+            document.getElementById('splitBtn').disabled = true;
             
-            document.getElementById('result').innerHTML = '<h3 style="color: green; text-align: center;">✅ Download Ho Gaya!</h3>';
+            try {
+                const { PDFDocument } = PDFLib;
+                const arrayBuffer = await input.files[0].arrayBuffer();
+                const pdf = await PDFDocument.load(arrayBuffer);
+                const newPdf = await PDFDocument.create();
+                
+                // Parse range (e.g., "1-3,5" -> [0,1,2,4])
+                const pagesToExtract = parsePageRange(rangeStr, pdf.getPageCount());
+                
+                for (let i = 0; i < pagesToExtract.length; i++) {
+                    updateProgress('splitProgressBar', Math.round((i / pagesToExtract.length) * 80));
+                    const [copiedPage] = await newPdf.copyPages(pdf, [pagesToExtract[i]]);
+                    newPdf.addPage(copiedPage);
+                }
+                
+                updateProgress('splitProgressBar', 100);
+                const pdfBytes = await newPdf.save();
+                const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = 'split-file.pdf';
+                link.click();
+                
+                alert('Split ho gaya!');
+            } catch (err) {
+                alert('Error: ' + err.message);
+            } finally {
+                document.getElementById('splitProgress').style.display = 'none';
+                document.getElementById('splitBtn').disabled = false;
+                updateProgress('splitProgressBar', 0);
+            }
         }
-    </script>
-</body>
-</html>
+
+        // ROTATE FUNCTION
+        async function rotatePDF() {
+            const input = document.getElementById('rotateInput');
+            const angle = parseInt(document.getElementById('rotateAngle').value);
+            
+            if (!input.files[0]) {
+                alert('PDF file select karo!');
+                return;
+            }
+
+            document.getElementById('rotateProgress').style.display = 'block';
+            document.getElementById('rotateBtn').disabled = true;
+            
+            try {
+                const { PDFDocument, degrees } = PDFLib;
+                const arrayBuffer = await input.files[0].arrayBuffer();
+                const pdf = await PDFDocument.load(arrayBuffer);
+                
+                const pages = pdf.getPages();
+                for (let i = 0; i < pages.length; i++) {
+                    updateProgress('rotateProgressBar', Math.round((i / pages.length) * 80));
+                    pages[i].setRotation(degrees(angle));
+                }
+                
+                updateProgress('rotateProgressBar', 100);
+                const pdfBytes = await pdf.save();
+                const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = 'rotated-file.pdf';
+                link.click();
+                
+                alert('Rotate ho gaya!');
+            } catch (err) {
+                alert('Error: ' + err.message);
+            } finally {
+                document.getElementById('rotateProgress').display = 'none';
+                document.getElementById('rotateBtn').disabled = false;
+                updateProgress('rotateProgressBar', 0);
+            }
+        }
+
+        // REMOVE PAGES FUNCTION
+        async function removePages() {
+            const input = document.getElementById('removeInput');
+            const pagesToRemoveStr = document.getElementById('removePages').value;
+            
+            if (!input.files[0] || !pagesToRemoveStr) {
+                alert('PDF file aur delete karne wale page numbers dalne hain!');
+                return;
+            }
+
+            document.getElementById('removeProgress').style.display = 'block';
+            document.getElementById('removeBtn').disabled = true;
+            
+            try {
+                const { PDFDocument } = PDFLib;
+                const arrayBuffer = await input.files[0].arrayBuffer();
+                const pdf = await PDFDocument.load(arrayBuffer);
+                const newPdf = await PDFDocument.create();
+                
+                const pagesToRemove = parsePageRange(pagesToRemoveStr, pdf.getPageCount());
+                const allPages = Array.from({length: pdf.getPageCount()}, (_, i) => i);
+                const pagesToKeep = allPages.filter(p => !pagesToRemove.includes(p));
+                
+                for (let i = 0; i < pagesToKeep.length; i++) {
+                    updateProgress('removeProgressBar', Math.round((i / pagesToKeep.length) * 80));
+                    const [copiedPage] = await newPdf.copyPages(pdf, [pagesToKeep[i]]);
+                    newPdf.addPage(copiedPage);
+                }
+                
+                updateProgress('removeProgressBar', 100);
+                const pdfBytes = await newPdf.save();
+                const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = 'modified-file.pdf';
+                link.click();
+                
+                alert('Pages delete ho gaye!');
+            } catch (err) {
+                alert('Error: ' + err.message);
+            } finally {
+                document.getElementById('removeProgress').style.display = 'none';
+                document.getElementById('removeBtn').disabled = false;
+                updateProgress('removeProgress
