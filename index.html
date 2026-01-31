@@ -3,22 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nishant PDF Pro | Futuristic Tools</title>
+    <title>Nishant PDF Pro | Complete Toolkit</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
     <script src="https://unpkg.com/downloadjs@1.4.7"></script>
     
     <style>
         :root {
-            --neon-blue: #00f3ff;
-            --neon-purple: #bc13fe;
-            --dark-bg: #0a0a0a;
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #7c3aed;
+            --accent: #06b6d4;
+            --dark: #0f172a;
+            --darker: #020617;
             --glass: rgba(255, 255, 255, 0.05);
-            --gradient-1: linear-gradient(135deg, #00f3ff 0%, #bc13fe 100%);
-            --gradient-2: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
         }
         
         * {
@@ -28,1217 +32,1055 @@
         }
         
         body {
-            font-family: 'Poppins', sans-serif;
-            background: var(--dark-bg);
-            color: white;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--darker);
+            color: #e2e8f0;
+            line-height: 1.6;
             overflow-x: hidden;
-            position: relative;
         }
         
-        /* Animated Background Grid */
-        .bg-grid {
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(124, 58, 237, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(6, 182, 212, 0.1) 0%, transparent 50%);
+            z-index: -2;
+            animation: bgPulse 10s ease-in-out infinite;
+        }
+        
+        @keyframes bgPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .grid-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             background-image: 
-                linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: gridMove 20s linear infinite;
-            pointer-events: none;
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
             z-index: -1;
-        }
-        
-        @keyframes gridMove {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
-        }
-        
-        /* Floating Particles */
-        .particle {
-            position: fixed;
-            width: 4px;
-            height: 4px;
-            background: var(--neon-blue);
-            border-radius: 50%;
-            pointer-events: none;
-            animation: float 15s infinite;
-            box-shadow: 0 0 10px var(--neon-blue);
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+            opacity: 0.5;
         }
         
         /* Navigation */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(10, 10, 10, 0.9);
+        nav {
+            background: rgba(15, 23, 42, 0.95);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            position: sticky;
+            top: 0;
             z-index: 1000;
-            padding: 15px 0;
-            animation: slideDown 0.8s ease;
+            padding: 1rem 0;
         }
         
-        @keyframes slideDown {
-            from { transform: translateY(-100%); }
-            to { transform: translateY(0); }
-        }
-        
-        .nav-container {
-            max-width: 1200px;
+        .nav-content {
+            max-width: 1400px;
             margin: 0 auto;
+            padding: 0 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 20px;
         }
         
-        /* 3D ANIMATED LOGO */
-        .logo-container {
+        .brand {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 1rem;
             cursor: pointer;
-            perspective: 1000px;
         }
         
-        .logo-3d {
-            width: 60px;
-            height: 60px;
-            position: relative;
-            transform-style: preserve-3d;
-            animation: rotate3d 10s infinite linear;
-        }
-        
-        @keyframes rotate3d {
-            0% { transform: rotateY(0deg) rotateX(0deg); }
-            25% { transform: rotateY(90deg) rotateX(0deg); }
-            50% { transform: rotateY(180deg) rotateX(0deg); }
-            75% { transform: rotateY(270deg) rotateX(0deg); }
-            100% { transform: rotateY(360deg) rotateX(0deg); }
-        }
-        
-        .logo-face {
-            position: absolute;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
-            border: 2px solid white;
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 900;
-            font-size: 28px;
-            color: white;
-            text-shadow: 0 0 10px rgba(255,255,255,0.8);
-            box-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
-        }
-        
-        .logo-face:nth-child(1) { transform: translateZ(30px); }
-        .logo-face:nth-child(2) { transform: rotateY(180deg) translateZ(30px); }
-        .logo-face:nth-child(3) { transform: rotateY(90deg) translateZ(30px); }
-        .logo-face:nth-child(4) { transform: rotateY(-90deg) translateZ(30px); }
-        .logo-face:nth-child(5) { transform: rotateX(90deg) translateZ(30px); }
-        .logo-face:nth-child(6) { transform: rotateX(-90deg) translateZ(30px); }
-        
-        .logo-glow {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: var(--neon-blue);
-            filter: blur(20px);
-            opacity: 0.5;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.2); opacity: 0.8; }
-        }
-        
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .logo-title {
-            font-family: 'Orbitron', sans-serif;
             font-size: 24px;
-            font-weight: 700;
-            background: var(--gradient-1);
+            font-weight: 800;
+            color: white;
+            box-shadow: 0 0 30px rgba(37, 99, 235, 0.5);
+            animation: logoGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes logoGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(37, 99, 235, 0.4); }
+            50% { box-shadow: 0 0 40px rgba(124, 58, 237, 0.6); }
+        }
+        
+        .brand-text h1 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #fff, #94a3b8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: glowText 2s infinite alternate;
+            margin: 0;
         }
         
-        @keyframes glowText {
-            from { filter: drop-shadow(0 0 5px rgba(0, 243, 255, 0.5)); }
-            to { filter: drop-shadow(0 0 20px rgba(188, 19, 254, 0.8)); }
+        .tagline {
+            font-size: 0.75rem;
+            color: var(--accent);
+            letter-spacing: 0.5px;
+            font-weight: 500;
+            max-width: 300px;
+            line-height: 1.4;
         }
         
-        .logo-subtitle {
-            font-size: 12px;
-            color: var(--neon-blue);
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            animation: blink 3s infinite;
-        }
-        
-        @keyframes blink {
-            0%, 90%, 100% { opacity: 1; }
-            95% { opacity: 0.3; }
-        }
-        
-        /* Nav Links */
         .nav-links {
             display: flex;
-            gap: 10px;
+            gap: 0.5rem;
         }
         
         .nav-link {
-            color: white;
+            padding: 0.5rem 1rem;
+            color: #94a3b8;
             text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 30px;
-            border: 1px solid transparent;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.9rem;
             transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-            font-weight: 600;
-        }
-        
-        .nav-link::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-1);
-            transition: left 0.3s;
-            z-index: -1;
-        }
-        
-        .nav-link:hover::before, .nav-link.active::before {
-            left: 0;
+            border: 1px solid transparent;
         }
         
         .nav-link:hover, .nav-link.active {
-            border-color: var(--neon-blue);
-            box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+            color: white;
+            background: rgba(255,255,255,0.05);
+            border-color: rgba(255,255,255,0.1);
         }
         
-        /* Main Content */
-        .main-content {
-            margin-top: 100px;
-            padding: 20px;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
         }
         
-        /* Sections */
-        .section {
-            display: none;
-            animation: fadeInUp 0.8s ease;
-        }
-        
-        .section.active {
-            display: block;
-        }
-        
-        @keyframes fadeInUp {
-            from { 
-                opacity: 0; 
-                transform: translateY(50px); 
-            }
-            to { 
-                opacity: 1; 
-                transform: translateY(0); 
-            }
-        }
-        
-        /* Hero Card */
-        .hero-card {
-            background: var(--glass);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 30px;
-            padding: 60px 40px;
+        /* Hero Section */
+        .hero {
             text-align: center;
-            margin-bottom: 40px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            padding: 4rem 2rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
         
-        .hero-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(0, 243, 255, 0.1) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
-        }
-        
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        
-        h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 42px;
-            margin-bottom: 20px;
-            background: var(--gradient-1);
+        .hero h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            position: relative;
-            z-index: 1;
         }
         
-        .subtitle {
-            font-size: 18px;
-            color: #aaa;
-            margin-bottom: 30px;
-            position: relative;
-            z-index: 1;
+        .hero p {
+            font-size: 1.25rem;
+            color: #64748b;
+            max-width: 800px;
+            margin: 0 auto;
         }
         
-        .typing-text {
-            display: inline-block;
-            border-right: 3px solid var(--neon-blue);
-            animation: typing 3s steps(30) infinite, blink-caret 0.75s step-end infinite;
-            white-space: nowrap;
-            overflow: hidden;
+        /* Tool Categories */
+        .category {
+            margin-bottom: 4rem;
         }
         
-        @keyframes typing {
-            0%, 100% { width: 0; }
-            50%, 90% { width: 100%; }
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
         }
         
-        @keyframes blink-caret {
-            50% { border-color: transparent; }
+        .category-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            background: rgba(255,255,255,0.05);
         }
         
-        /* Glass Cards Grid */
-        .glass-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
-        }
-        
-        .glass-card {
-            background: var(--glass);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 40px 30px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.4s;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .glass-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-            transition: left 0.5s;
-        }
-        
-        .glass-card:hover::before {
-            left: 100%;
-        }
-        
-        .glass-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            border-color: var(--neon-blue);
-            box-shadow: 0 20px 40px rgba(0, 243, 255, 0.2);
-        }
-        
-        .card-icon {
-            font-size: 50px;
-            margin-bottom: 20px;
-            display: block;
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        .glass-card h3 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 22px;
-            margin-bottom: 10px;
+        .category-title {
+            font-size: 1.5rem;
+            font-weight: 700;
             color: white;
         }
         
-        .glass-card p {
-            color: #aaa;
-            font-size: 14px;
+        .category-desc {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
         }
         
-        /* Tool Sections */
-        .tool-container {
+        /* Tools Grid */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .tool-card {
             background: var(--glass);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 30px;
-            padding: 50px;
-            margin-bottom: 30px;
-            animation: slideIn 0.6s ease;
-        }
-        
-        @keyframes slideIn {
-            from { 
-                opacity: 0; 
-                transform: translateX(-50px); 
-            }
-            to { 
-                opacity: 1; 
-                transform: translateX(0); 
-            }
-        }
-        
-        .upload-zone {
-            border: 3px dashed rgba(0, 243, 255, 0.3);
-            background: rgba(0, 243, 255, 0.05);
-            border-radius: 20px;
-            padding: 60px 40px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 1.5rem;
             text-align: center;
-            margin: 30px 0;
             cursor: pointer;
             transition: all 0.3s;
             position: relative;
             overflow: hidden;
         }
         
-        .upload-zone:hover {
-            border-color: var(--neon-blue);
-            background: rgba(0, 243, 255, 0.1);
-            transform: scale(1.02);
-            box-shadow: 0 0 30px rgba(0, 243, 255, 0.2);
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient-1);
+            transform: scaleX(0);
+            transition: transform 0.3s;
         }
         
-        .upload-icon-main {
-            font-size: 80px;
-            margin-bottom: 20px;
-            animation: bounce 2s infinite;
+        .tool-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255,255,255,0.2);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            background: rgba(255,255,255,0.08);
         }
         
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+        .tool-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .tool-card.pro {
+            border-color: rgba(245, 158, 11, 0.3);
+        }
+        
+        .tool-card.pro::after {
+            content: 'PRO';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(135deg, var(--warning), #d97706);
+            color: white;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 20px;
+        }
+        
+        .tool-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .tool-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tool-desc {
+            font-size: 0.75rem;
+            color: #64748b;
+            line-height: 1.4;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            margin-top: 0.5rem;
+        }
+        
+        .badge-new {
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--success);
+        }
+        
+        .badge-beta {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--warning);
+        }
+        
+        .badge-soon {
+            background: rgba(239, 68, 68, 0.2);
+            color: var(--danger);
+        }
+        
+        /* Tool Section */
+        .tool-section {
+            display: none;
+            animation: fadeIn 0.5s;
+            background: var(--glass);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 24px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .tool-section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .tool-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .tool-header h3 {
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tool-header p {
+            color: #64748b;
+        }
+        
+        /* Upload Area */
+        .upload-box {
+            border: 2px dashed rgba(6, 182, 212, 0.3);
+            background: rgba(6, 182, 212, 0.05);
+            border-radius: 16px;
+            padding: 3rem;
+            text-align: center;
+            margin: 2rem 0;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .upload-box:hover {
+            border-color: var(--accent);
+            background: rgba(6, 182, 212, 0.1);
         }
         
         input[type="file"] {
             display: none;
         }
         
-        .file-label {
-            display: inline-block;
-            padding: 15px 40px;
-            background: var(--gradient-1);
-            color: white;
-            border-radius: 30px;
-            cursor: pointer;
+        .btn {
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            border: none;
             font-weight: 600;
-            transition: all 0.3s;
-            box-shadow: 0 5px 20px rgba(188, 19, 254, 0.4);
-        }
-        
-        .file-label:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(188, 19, 254, 0.6);
-        }
-        
-        .neon-input {
-            background: rgba(0,0,0,0.3);
-            border: 1px solid rgba(0, 243, 255, 0.3);
-            color: white;
-            padding: 15px 25px;
-            border-radius: 10px;
-            width: 100%;
-            max-width: 400px;
-            margin: 15px 0;
-            font-size: 16px;
-            transition: all 0.3s;
-        }
-        
-        .neon-input:focus {
-            outline: none;
-            border-color: var(--neon-blue);
-            box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
-        }
-        
-        .neon-button {
-            background: transparent;
-            color: white;
-            border: 2px solid var(--neon-blue);
-            padding: 15px 50px;
-            font-size: 18px;
-            border-radius: 30px;
             cursor: pointer;
-            font-weight: 600;
-            position: relative;
-            overflow: hidden;
             transition: all 0.3s;
-            margin: 20px 0;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
         
-        .neon-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--neon-blue);
-            transition: left 0.3s;
-            z-index: -1;
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
         }
         
-        .neon-button:hover::before {
-            left: 0;
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.6);
         }
         
-        .neon-button:hover {
-            color: black;
-            box-shadow: 0 0 30px var(--neon-blue);
-        }
-        
-        .neon-button:disabled {
+        .btn:disabled {
             opacity: 0.5;
             cursor: not-allowed;
         }
         
-        /* Progress Bar */
-        .progress-wrapper {
+        .progress-container {
             display: none;
-            margin: 30px auto;
-            max-width: 500px;
+            margin-top: 2rem;
+            background: rgba(255,255,255,0.05);
+            padding: 1rem;
+            border-radius: 12px;
         }
         
-        .progress-bar-container {
+        .progress-bar {
             width: 100%;
-            height: 40px;
-            background: rgba(0,0,0,0.3);
-            border-radius: 20px;
+            height: 10px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
             overflow: hidden;
-            border: 1px solid rgba(0, 243, 255, 0.3);
-            position: relative;
+            margin-top: 1rem;
         }
         
         .progress-fill {
             height: 100%;
-            background: var(--gradient-1);
+            background: linear-gradient(90deg, var(--primary), var(--accent));
             width: 0%;
-            transition: width 0.5s;
+            transition: width 0.3s;
+        }
+        
+        .notice {
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            color: var(--warning);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+        
+        .notice.info {
+            background: rgba(6, 182, 212, 0.1);
+            border-color: rgba(6, 182, 212, 0.3);
+            color: var(--accent);
+        }
+        
+        .back-btn {
+            margin-top: 2rem;
+            color: #64748b;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .back-btn:hover {
+            color: white;
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(15, 23, 42, 0.8);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-weight: bold;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .progress-fill::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            animation: shimmer 1.5s infinite;
-        }
-        
-        @keyframes shimmer {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-        
-        /* Contact Section */
-        .contact-section {
-            background: var(--glass);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 30px;
-            padding: 50px;
-            margin-top: 50px;
-        }
-        
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-        
-        .contact-item {
-            background: rgba(0,0,0,0.3);
-            padding: 25px;
-            border-radius: 15px;
-            border: 1px solid rgba(0, 243, 255, 0.2);
-            transition: all 0.3s;
-            text-align: center;
-        }
-        
-        .contact-item:hover {
-            transform: translateY(-5px);
-            border-color: var(--neon-blue);
-            box-shadow: 0 10px 30px rgba(0, 243, 255, 0.2);
-        }
-        
-        .contact-icon {
-            font-size: 35px;
-            margin-bottom: 15px;
-        }
-        
-        .contact-item h3 {
-            color: var(--neon-blue);
-            margin-bottom: 10px;
-            font-family: 'Orbitron', sans-serif;
-        }
-        
-        .contact-item a {
-            color: white;
             text-decoration: none;
-            font-size: 18px;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-        
-        .contact-item a:hover {
-            color: var(--neon-purple);
-        }
-        
-        /* Share Buttons */
-        .share-container {
-            text-align: center;
-            margin: 40px 0;
-        }
-        
-        .share-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 15px 30px;
-            margin: 10px;
-            border-radius: 50px;
-            text-decoration: none;
-            color: white;
-            font-weight: 600;
-            transition: all 0.3s;
-            border: 1px solid transparent;
-        }
-        
-        .share-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-        
-        .btn-whatsapp { background: #25D366; }
-        .btn-facebook { background: #1877F2; }
-        .btn-twitter { background: #1DA1F2; }
-        .btn-telegram { background: #0088cc; }
-        
-        /* Back Button */
-        .back-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--neon-blue);
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 30px;
             transition: all 0.3s;
         }
         
-        .back-btn:hover {
-            color: var(--neon-purple);
-            transform: translateX(-5px);
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
         }
         
-        /* Responsive */
         @media (max-width: 768px) {
-            h1 { font-size: 28px; }
+            .hero h2 { font-size: 2rem; }
+            .tools-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
             .nav-links { display: none; }
-            .glass-grid { grid-template-columns: 1fr; }
-            .tool-container, .hero-card { padding: 30px 20px; }
-            .logo-3d { width: 50px; height: 50px; }
-            .logo-face { width: 50px; height: 50px; font-size: 20px; }
-        }
-        
-        /* Loading Animation */
-        .loader {
-            display: none;
-            width: 50px;
-            height: 50px;
-            border: 3px solid rgba(0, 243, 255, 0.3);
-            border-radius: 50%;
-            border-top-color: var(--neon-blue);
-            animation: spin 1s ease-in-out infinite;
-            margin: 20px auto;
-        }
-        
-        @keyframes spin {
-            to { transform: rotate(360deg); }
         }
     </style>
 </head>
 <body>
-
-    <!-- Background Effects -->
-    <div class="bg-grid"></div>
-    <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
-    <div class="particle" style="left: 30%; animation-delay: 3s;"></div>
-    <div class="particle" style="left: 50%; animation-delay: 5s;"></div>
-    <div class="particle" style="left: 70%; animation-delay: 2s;"></div>
-    <div class="particle" style="left: 90%; animation-delay: 4s;"></div>
-
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo-container" onclick="showSection('home')">
-                <div class="logo-glow"></div>
-                <div class="logo-3d">
-                    <div class="logo-face">N</div>
-                    <div class="logo-face">P</div>
-                    <div class="logo-face">N</div>
-                    <div class="logo-face">P</div>
-                    <div class="logo-face">⚡</div>
-                    <div class="logo-face">🔥</div>
-                </div>
-                <div class="logo-text">
-                    <div class="logo-title">NISHANT PRO</div>
-                    <div class="logo-subtitle">PDF Tools v2.0</div>
+    <div class="bg-animation"></div>
+    <div class="grid-overlay"></div>
+    
+    <nav>
+        <div class="nav-content">
+            <div class="brand" onclick="showSection('home')">
+                <div class="logo-icon">NP</div>
+                <div class="brand-text">
+                    <h1>NISHANT PDF</h1>
+                    <div class="tagline">Your all-in-one PDF toolkit—everything you need, right where you need it.</div>
                 </div>
             </div>
-            
             <div class="nav-links">
                 <a href="#" class="nav-link active" onclick="showSection('home')">Home</a>
-                <a href="#" class="nav-link" onclick="showSection('merge')">Merge</a>
-                <a href="#" class="nav-link" onclick="showSection('unlock')">Unlock</a>
-                <a href="#" class="nav-link" onclick="showSection('compress')">Compress</a>
-                <a href="#" class="nav-link" onclick="showSection('split')">Split</a>
-                <a href="#" class="nav-link" onclick="showSection('contact')">Contact</a>
+                <a href="#" class="nav-link" onclick="showSection('convert')">Convert</a>
+                <a href="#" class="nav-link" onclick="showSection('edit')">Edit</a>
+                <a href="#" class="nav-link" onclick="showSection('security')">Security</a>
             </div>
         </div>
     </nav>
-
-    <!-- Main Content -->
-    <div class="main-content">
-
-        <!-- HOME SECTION -->
-        <div class="section active" id="home">
-            <div class="hero-card">
-                <h1>FUTURISTIC PDF TOOLS</h1>
-                <p class="subtitle">
-                    <span class="typing-text">Professional Tools by Nishant Pohanekar...</span>
-                </p>
-                <p style="color: #aaa; margin-top: 20px;">
-                    Next-gen PDF processing with military-grade security. 
-                    <br>All processing happens in your browser. 100% Private.
-                </p>
+    
+    <div class="container">
+        
+        <!-- HOME / ALL TOOLS -->
+        <div class="tool-section active" id="home">
+            <div class="hero">
+                <h2>Complete PDF Toolkit</h2>
+                <p>Professional PDF tools by Nishant Pohanekar. 24+ tools to convert, edit, optimize, and secure your documents.</p>
             </div>
-
-            <div class="glass-grid">
-                <div class="glass-card" onclick="showSection('merge')">
-                    <span class="card-icon">📑</span>
-                    <h3>MERGE PDF</h3>
-                    <p>Combine multiple PDFs into one seamless document</p>
-                </div>
-                
-                <div class="glass-card" onclick="showSection('unlock')">
-                    <span class="card-icon">🔓</span>
-                    <h3>UNLOCK PDF</h3>
-                    <p>Remove password protection instantly</p>
-                </div>
-                
-                <div class="glass-card" onclick="showSection('compress')">
-                    <span class="card-icon">🗜️</span>
-                    <h3>COMPRESS</h3>
-                    <p>Reduce file size without quality loss</p>
-                </div>
-                
-                <div class="glass-card" onclick="showSection('split')">
-                    <span class="card-icon">✂️</span>
-                    <h3>SPLIT PDF</h3>
-                    <p>Extract specific pages easily</p>
-                </div>
-                
-                <div class="glass-card" onclick="showSection('rotate')">
-                    <span class="card-icon">🔄</span>
-                    <h3>ROTATE</h3>
-                    <p>Change page orientation</p>
-                </div>
-                
-                <div class="glass-card" onclick="showSection('remove')">
-                    <span class="card-icon">🗑️</span>
-                    <h3>REMOVE PAGES</h3>
-                    <p>Delete unwanted pages permanently</p>
-                </div>
-            </div>
-
-            <div class="share-container">
-                <h3 style="margin-bottom: 20px; font-family: 'Orbitron'">SHARE THE FUTURE</h3>
-                <a href="https://wa.me/?text=🔥%20*Futuristic%20PDF%20Tools*%0A%0AProfessional%20Tools%20by%20Nishant%20Pohanekar%0A%0A👉%20https://nishu4ai.github.io/n4pdftool" target="_blank" class="share-btn btn-whatsapp">
-                    <span>📱</span> WhatsApp
-                </a>
-                <a href="https://www.facebook.com/sharer/sharer.php?u=https://nishu4ai.github.io/n4pdftool" target="_blank" class="share-btn btn-facebook">
-                    <span>📘</span> Facebook
-                </a>
-                <a href="https://twitter.com/intent/tweet?text=🚀%20Futuristic%20PDF%20Tools%20by%20@nishu4nishant&url=https://nishu4ai.github.io/n4pdftool" target="_blank" class="share-btn btn-twitter">
-                    <span>🐦</span> Twitter
-                </a>
-                <a href="https://t.me/share/url?url=https://nishu4ai.github.io/n4pdftool&text=⚡%20Advanced%20PDF%20Tools" target="_blank" class="share-btn btn-telegram">
-                    <span>✈️</span> Telegram
-                </a>
-            </div>
-        </div>
-
-        <!-- MERGE SECTION -->
-        <div class="section" id="merge">
-            <div class="tool-container">
-                <h1>📑 MERGE PDF</h1>
-                <p style="text-align: center; color: #aaa; margin-bottom: 30px;">
-                    Combine multiple PDFs into a single document
-                </p>
-                
-                <div class="upload-zone" onclick="document.getElementById('mergeInput').click()">
-                    <div class="upload-icon-main">📂</div>
-                    <h3 style="margin-bottom: 15px;">Drop files here or click to browse</h3>
-                    <span class="file-label">Select Multiple PDFs</span>
-                    <input type="file" id="mergeInput" accept=".pdf" multiple onchange="showFiles(this, 'mergeList')">
-                    <div id="mergeList" style="margin-top: 20px; color: var(--neon-blue);"></div>
-                </div>
-                
-                <center>
-                    <button class="neon-button" onclick="processMerge()" id="mergeBtn">
-                        ⚡ MERGE NOW
-                    </button>
-                </center>
-                
-                <div class="progress-wrapper" id="mergeProgress">
-                    <div class="progress-bar-container">
-                        <div class="progress-fill" id="mergeBar">0%</div>
+            
+            <!-- CONVERT FROM PDF -->
+            <div class="category">
+                <div class="category-header">
+                    <div class="category-icon">📤</div>
+                    <div>
+                        <div class="category-title">Convert from PDF</div>
+                        <div class="category-desc">Convert PDFs to editable formats</div>
                     </div>
                 </div>
-                
-                <center>
-                    <a href="#" class="back-btn" onclick="showSection('home')">← Back to Home</a>
-                </center>
-            </div>
-        </div>
-
-        <!-- UNLOCK SECTION -->
-        <div class="section" id="unlock">
-            <div class="tool-container">
-                <h1>🔓 UNLOCK PDF</h1>
-                <p style="text-align: center; color: #aaa; margin-bottom: 30px;">
-                    Remove password protection from your PDF
-                </p>
-                
-                <div style="background: rgba(255,0,0,0.1); border: 1px solid rgba(255,0,0,0.3); padding: 20px; border-radius: 10px; margin-bottom: 30px; text-align: center;">
-                    ⚠️ You must know the password. Illegal cracking is not possible.
-                </div>
-                
-                <div class="upload-zone" onclick="document.getElementById('unlockInput').click()">
-                    <div class="upload-icon-main">🔐</div>
-                    <h3 style="margin-bottom: 15px;">Select locked PDF</h3>
-                    <span class="file-label">Choose File</span>
-                    <input type="file" id="unlockInput" accept=".pdf" onchange="showFiles(this, 'unlockList')">
-                    <div id="unlockList" style="margin-top: 20px; color: var(--neon-blue);"></div>
-                </div>
-                
-                <center>
-                    <input type="password" id="pdfPass" class="neon-input" placeholder="Enter PDF Password" style="margin-top: 20px;">
-                    <br>
-                    <button class="neon-button" onclick="processUnlock()" id="unlockBtn">
-                        🔓 UNLOCK NOW
-                    </button>
-                </center>
-                
-                <div class="progress-wrapper" id="unlockProgress">
-                    <div class="progress-bar-container">
-                        <div class="progress-fill" id="unlockBar">0%</div>
-                    </div>
-                </div>
-                
-                <center>
-                    <a href="#" class="back-btn" onclick="showSection('home')">← Back to Home</a>
-                </center>
-            </div>
-        </div>
-
-        <!-- COMPRESS SECTION -->
-        <div class="section" id="compress">
-            <div class="tool-container">
-                <h1>🗜️ COMPRESS PDF</h1>
-                <p style="text-align: center; color: #aaa; margin-bottom: 30px;">
-                    Optimize PDF size while maintaining quality
-                </p>
-                
-                <div class="upload-zone" onclick="document.getElementById('compressInput').click()">
-                    <div class="upload-icon-main">🗜️</div>
-                    <h3 style="margin-bottom: 15px;">Select PDF to compress</h3>
-                    <span class="file-label">Choose File</span>
-                    <input type="file" id="compressInput" accept=".pdf" onchange="showFiles(this, 'compressList')">
-                    <div id="compressList" style="margin-top: 20px; color: var(--neon-blue);"></div>
-                </div>
-                
-                <center>
-                    <button class="neon-button" onclick="processCompress()" id="compressBtn">
-                        🚀 COMPRESS NOW
-                    </button>
-                </center>
-                
-                <div class="progress-wrapper" id="compressProgress">
-                    <div class="progress-bar-container">
-                        <div class="progress-fill" id="compressBar">0%</div>
-                    </div>
-                </div>
-                
-                <center>
-                    <a href="#" class="back-btn" onclick="showSection('home')">← Back to Home</a>
-                </center>
-            </div>
-        </div>
-
-        <!-- SPLIT SECTION -->
-        <div class="section" id="split">
-            <div class="tool-container">
-                <h1>✂️ SPLIT PDF</h1>
-                <p style="text-align: center; color: #aaa; margin-bottom: 30px;">
-                    Extract specific pages from your PDF
-                </p>
-                
-                <div class="upload-zone" onclick="document.getElementById('splitInput').click()">
-                    <div class="upload-icon-main">📄</div>
-                    <h3 style="margin-bottom: 15px;">Select PDF</h3>
-                    <span class="file-label">Choose File</span>
-                    <input type="file" id="splitInput" accept=".pdf" onchange="showFiles(this, 'splitList')">
-                    <div id="splitList" style="margin-top: 20px; color: var(--neon-blue);"></div>
-                </div>
-                
-                <center>
-                    <input type="text" id="splitRange" class="neon-input" placeholder="e.g., 1-3, 5, 7-9" style="margin-top: 20px;">
-                    <p style="color: #666; font-size: 14px; margin-top: 10px;">Format: Pages to extract (e.g., 1-3 extracts pages 1,2,3)</p>
-                    <button class="neon-button" onclick="processSplit()" id="splitBtn">
-                        ✂️ SPLIT NOW
-                    </button>
-                </center>
-                
-                <div class="progress-wrapper" id="splitProgress">
-                    <div class="progress-bar-container">
-                        <div class="progress-fill" id="splitBar">0%</div>
-                    </div>
-                </div>
-                
-                <center>
-                    <a href="#" class="back-btn" onclick="showSection('home')">← Back to Home</a>
-                </center>
-            </div>
-        </div>
-
-        <!-- ROTATE SECTION -->
-        <div class="section" id="rotate">
-            <div class="tool-container">
-                <h1>🔄 ROTATE PDF</h1>
-                <p style="text-align: center; color: #aaa; margin-bottom: 30px;">
-                    Change page orientation
-                </p>
-                
-                <div class="upload-zone" onclick="document.getElementById('rotateInput').click()">
-                    <div class="upload-icon-main">🔄</div>
-                    <h3 style="margin-bottom: 15px;">Select PDF</h3>
-                    <span class="file-label">Choose File</span>
-                    <input type="file" id="rotateInput" accept=".pdf" onchange="showFiles(this, 'rotateList')">
-                    <div id="rotateList" style="margin-top: 20px; color: var(--neon-blue);"></div>
-                </div>
-                
-                <center>
-                    <select id="rotateAngle" class="neon-input" style="width: auto; min-width: 250px;">
-                        <option value="90">90° Clockwise</option>
-                        <option value="180">180° (Flip)</option>
-                        <option value="270">270° Counter-Clockwise</option>
-                    </select>
-                    <br>
-                    <button class="neon-button" onclick="processRotate()" id="rotateBtn">
-                        🔄 ROTATE NOW
-                    </button>
-                </center>
-                
-                <div class="progress-wrapper" id="rotateProgress">
-                    <div class="progress-bar-container">
-                        <div class="progress-fill" id="rotateBar">0%</div>
-                    </div>
-                </div>
-                
-                <center>
-                    <a href="#" class="back-btn" onclick="showSection('home')">← Back to Home</a>
-                </center>
-            </div>
-        </div>
-
-        <!-- REMOVE PAGES SECTION -->
-        <div class="section" id="remove">
-            <div class="tool-container">
-                <h1>🗑️ REMOVE PAGES</h1>
-                <p style="text-align: center; color: #aaa; margin-bottom: 30px;">
-                    Delete unwanted pages permanently
-                </p>
-                
-                <div class="upload-zone" onclick="document.getElementById('removeInput').click()">
-                    <div class="upload-icon-main">🗑️</div>
-                    <h3 style="margin-bottom: 15px;">Select PDF</h3>
-                    <span class="file-label">Choose File</span>
-                    <input type="file" id="removeInput" accept=".pdf" onchange="showFiles(this, 'removeList')">
-                    <div id="removeList" style="margin-top: 20px; color: var(--neon-blue);"></div>
-                </div>
-                
-                <center>
-                    <input type="text" id="removeRange" class="neon-input" placeholder="e.g., 2, 4-6, 9" style="margin-top: 20px;">
-                    <p style="color: #666; font-size: 14px; margin-top: 10px;">Pages to DELETE (e.g., 2 deletes page 2, 4-6 deletes pages 4,5,6)</p>
-                    <button class="neon-button" onclick="processRemove()" id="removeBtn">
-                        🗑️ DELETE PAGES
-                    </button>
-                </center>
-                
-                <div class="progress-wrapper" id="removeProgress">
-                    <div class="progress-bar-container">
-                        <div class="progress-fill" id="removeBar">0%</div>
-                    </div>
-                </div>
-                
-                <center>
-                    <a href="#" class="back-btn" onclick="showSection('home')">← Back to Home</a>
-                </center>
-            </div>
-        </div>
-
-        <!-- CONTACT SECTION -->
-        <div class="section" id="contact">
-            <div class="contact-section">
-                <h1 style="margin-bottom: 10px;">📞 CONTACT DEVELOPER</h1>
-                <p style="text-align: center; color: #aaa;">Get in touch with Nishant Pohanekar</p>
-                
-                <div class="contact-grid">
-                    <div class="contact-item">
-                        <div class="contact-icon">📱</div>
-                        <h3>WhatsApp</h3>
-                        <a href="https://wa.me/919960803311" target="_blank">+91 99608 03311</a>
+                <div class="tools-grid">
+                    <div class="tool-card" onclick="showTool('pdf-to-word')">
+                        <span class="tool-icon">📝</span>
+                        <div class="tool-name">PDF to Word</div>
+                        <div class="tool-desc">Convert to DOCX format</div>
+                        <span class="badge badge-beta">API NEEDED</span>
                     </div>
                     
-                    <div class="contact-item">
-                        <div class="contact-icon">✈️</div>
-                        <h3>Telegram</h3>
-                        <a href="https://t.me/+919960803311" target="_blank">@nishantpdf</a>
+                    <div class="tool-card" onclick="showTool('pdf-to-excel')">
+                        <span class="tool-icon">📊</span>
+                        <div class="tool-name">PDF to Excel</div>
+                        <div class="tool-desc">Convert tables to XLSX</div>
+                        <span class="badge badge-beta">API NEEDED</span>
                     </div>
                     
-                    <div class="contact-item">
-                        <div class="contact-icon">📸</div>
-                        <h3>Instagram</h3>
-                        <a href="https://www.instagram.com/i_nishu4/" target="_blank">@i_nishu4</a>
+                    <div class="tool-card" onclick="showTool('pdf-to-ppt')">
+                        <span class="tool-icon">🎯</span>
+                        <div class="tool-name">PDF to PPT</div>
+                        <div class="tool-desc">Convert to PowerPoint</div>
+                        <span class="badge badge-beta">API NEEDED</span>
                     </div>
                     
-                    <div class="contact-item">
-                        <div class="contact-icon">🐦</div>
-                        <h3>Twitter/X</h3>
-                        <a href="https://twitter.com/nishu4nishant" target="_blank">@nishu4nishant</a>
+                    <div class="tool-card" onclick="showTool('pdf-to-jpg')">
+                        <span class="tool-icon">🖼️</span>
+                        <div class="tool-name">PDF to JPG</div>
+                        <div class="tool-desc">Convert pages to images</div>
+                        <span class="badge badge-new">AVAILABLE</span>
                     </div>
                     
-                    <div class="contact-item">
-                        <div class="contact-icon">📘</div>
-                        <h3>Facebook</h3>
-                        <a href="https://www.facebook.com/nishu4" target="_blank">nishu4</a>
+                    <div class="tool-card" onclick="showTool('pdf-to-html')">
+                        <span class="tool-icon">🌐</span>
+                        <div class="tool-name">PDF to HTML</div>
+                        <div class="tool-desc">Web-ready documents</div>
+                        <span class="badge badge-soon">SOON</span>
                     </div>
                     
-                    <div class="contact-item">
-                        <div class="contact-icon">👨‍💻</div>
-                        <h3>Developer</h3>
-                        <span style="color: var(--neon-blue); font-weight: 600;">Nishant Pohanekar</span>
+                    <div class="tool-card" onclick="showTool('pdf-to-pdfa')">
+                        <span class="tool-icon">📋</span>
+                        <div class="tool-name">PDF to PDF/A</div>
+                        <div class="tool-desc">Archive-ready format</div>
+                        <span class="badge badge-pro">PRO</span>
                     </div>
                 </div>
-                
-                <center>
-                    <a href="#" class="back-btn" onclick="showSection('home')" style="margin-top: 30px;">← Back to Home</a>
-                </center>
             </div>
+            
+            <!-- CONVERT TO PDF -->
+            <div class="category">
+                <div class="category-header">
+                    <div class="category-icon">📥</div>
+                    <div>
+                        <div class="category-title">Convert to PDF</div>
+                        <div class="category-desc">Create PDFs from other formats</div>
+                    </div>
+                </div>
+                <div class="tools-grid">
+                    <div class="tool-card" onclick="showTool('word-to-pdf')">
+                        <span class="tool-icon">📄</span>
+                        <div class="tool-name">Word to PDF</div>
+                        <div class="tool-desc">DOCX to PDF</div>
+                        <span class="badge badge-beta">API NEEDED</span>
+                    </div>
+                    
+                    <div class="tool-card" onclick="showTool('excel-to-pdf')">
+                        <span class="tool-icon">📈</span>
+                        <div class="tool-name">Excel to PDF</div>
+                        <div class="tool-desc">XLSX to PDF</div>
+                        <span class="badge badge-beta">API NEEDED</span>
+                    </div>
+                    
+                    <div class="tool-card" onclick="showTool('ppt-to-pdf')">
+                        <span class="tool-icon">🎨</span>
+                        <div class="tool-name">PPT to PDF</div>
+                        <div class="tool-desc">PowerPoint to PDF</div>
+                        <span class="badge badge-beta">API NEEDED</span>
+                    </div>
+                    
+                    <div class="tool-card" onclick="showTool('jpg-to-pdf')">
+                        <span class="tool-icon">🖼️</span>
+                        <div class="tool-name">JPG to PDF</div>
+                        <div class="tool-desc">Images to PDF</div>
+                        <span class="badge badge-new">AVAILABLE</span>
+                    </div>
+                    
+                    <div class="tool-card" onclick="showTool('html-to-pdf')">
+                        <span class="tool-icon">💻</span>
+                        <div class="tool-name">HTML to PDF</div>
+                        <div class="tool-desc">Web pages to PDF</div>
+                        <span class="badge badge-soon">SOON</span>
+                    </div>
+                    
+                    <div class="tool-card" onclick="showTool('scan-to-pdf')">
+                        <span class="tool-icon">📱</span>
+                        <div class="tool-name">Scan to PDF</div>
+                        <div class="tool-desc">Camera scanner</div>
+                        <span class="badge badge-soon">MOBILE</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- OPTIMIZE -->
+            <div class="category">
+                <div class="category-header">
+                    <div class="category-icon">⚡</div>
+                    <div>
+                        <div class="category-title">Optimize</div>
+                        <div class="category-desc">Compress and repair</div>
+                    </div>
+                </div>
+                <div class="tools-grid">
+                    <div class="tool-card" onclick="showTool('compress')">
+                        <span class="tool-icon">🗜️</span>
+                        <div class="tool-name">Compress PDF</div>
+                        <div class="tool-desc">Reduce file size</div>
+                        <span class="badge badge-new">FREE</span>
+                    </div>
+                    
+                    <div class="tool-card" onclick="showTool('merge')">
+                        <span class="tool-icon">📑</span>
+                        <div class="tool-name">Merge PDF</div>
+                        <div class="tool-desc">Combine files</div>
+                        <span class="badge badge-new">FREE</span>
+                    </div>
+                    
+                    <div class="tool-card" onclick="showTool('split')">
+                        <span class="tool-icon">✂️</span>
+                        <div class="tool-name">Split PDF</div>
+                        <div class="tool-desc">Extract pages</div>
+                        <span class="badge badge-new">FREE</span>
+                    </div>
+                    
+                    <div class="tool-card" onclick="showTool('ocr')">
+                        <span class="tool-icon">🔍</span>
+                        <div class="tool-name">OCR PDF</div>
+                        <div class="tool-desc">Make PDFs searchable</div>
+                        <span class="badge badge-pro">PRO</span>
+                    </div>
+                    
+                    <div class="tool-card" onclick="showTool('repair')">
+                        <span class="tool-icon">🔧</span>
+                        <div class="tool-name">Repair PDF</div>
+                        <div class="tool-desc">Fix corrupted files</div>
+                        <span class="badge badge-pro">PAID</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- EDIT -->
+            <div class="category">
+                <div class="category-header">
+                    <div class="category-icon">✏️</div>
+                    <div>
+                        <div class="category-title">Edit & Modify</div>
+                        <div class="category-desc">Manipulate PDF content</div>
+                    </div>
+                </div>
+                <div class="tools-grid">
+                    <div class="tool-card" onclick="showTool('edit')">
+                        <span class="tool-icon">📝</span>
+                        <div class="tool-name">Edit PDF</div>
+                        <div class="tool-desc">Edit text & images</div>
+                        <span class="badge badge-soon">SOON</span>
+                    </div>
+                    
+                    <div class="tool-card" onclick="showTool('rotate')">
+                        <span class="tool-icon">🔄</span>
+                        <div class="tool-name">Rotate PDF</div>
+                        <div class="tool-desc">Change orientation</div>
+                        <span class="badge badge-new">FREE</span>
+                    </div>
+                    
+                    <div class="tool-card" onclick="showTool('crop')">
+                        <span class="tool-icon">✂️</span>
+                        <div class="tool-name">Crop PDF</div>
+                        <div class="tool-desc">Trim margins</div>
+                        <span class="badge badge-soon">SOON</span>
+                    </div>
+                    
+                    <div class="tool-card" onclick="showTool('remove')">
+                        <span class="tool-icon">🗑️</span>
+                        <div class="tool-name">Remove Pages</div>
+                        <div class="tool-desc">Delete pages</div>
+                        <span class="badge badge-new">FREE</span>
+                    </div>
+                    
+                    <div class="tool-card" onclick="showTool('pagenumber')">
+                        <span class="tool-icon">🔢</span>
+                        <div class="tool-name">Page Numbers</div>
+                        <div class="tool-desc">Add numbering</div>
+                        <span class="badge badge-soon">SOON</span>
+                    </div>
+                    
+                    <div class="tool-card" onclick="showTool('compare')">
+                        <span class="tool-icon">⚖️</span>
+                        <div class="tool-name">Compare PDF</div>
+                        <div class="tool-desc">Find differences</div>
+                        <span class="badge badge-pro">PRO</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SECURITY -->
+            <div class="category">
+                <div class="category-header">
+                    <div class="category-icon">🔒</div>
+                    <div>
+                        <div class="category-title">Security</div>
+                        <div class="category-desc">Protect and sign</div>
+                    </div>
+                </div>
+                <div class="tools-grid">
+                    <div class="tool-card" onclick="showTool('unlock')">
+                        <span class="tool-icon">🔓</span>
+                        <div class="tool-name">Unlock PDF</div>
+                        <div class="tool-desc">Remove password</div>
+                        <span class="badge badge-new">FREE</span>
+                    </div>
+                    
+                    <div class="tool-card" onclick="showTool('protect')">
+                        <span class="tool-icon">🛡️</span>
+                        <div class="tool-name">Protect PDF</div>
+                        <div class="tool-desc">Add password</div>
+                        <span class="badge badge-new">FREE</span>
+                    </div>
+                    
+                    <div class="tool-card" onclick="showTool('sign')">
+                        <span class="tool-icon">✍️</span>
+                        <div class="tool-name">Sign PDF</div>
+                        <div class="tool-desc">Digital signatures</div>
+                        <span class="badge badge-pro">PRO</span>
+                    </div>
+                    
+                    <div class="tool-card" onclick="showTool('watermark')">
+                        <span class="tool-icon">💧</span>
+                        <div class="tool-name">Watermark</div>
+                        <div class="tool-desc">Add watermark</div>
+                        <span class="badge badge-soon">SOON</span>
+                    </div>
+                </div>
+            </div>
+            
+            <footer>
+                <div class="footer-content">
+                    <h3>Nishant Pohanekar</h3>
+                    <p>Full Stack Developer & Digital Creator</p>
+                    <div class="social-links">
+                        <a href="https://wa.me/919960803311" class="social-link" title="WhatsApp">📱</a>
+                        <a href="https://www.instagram.com/i_nishu4/" class="social-link" title="Instagram">📸</a>
+                        <a href="https://twitter.com/nishu4nishant" class="social-link" title="Twitter">🐦</a>
+                        <a href="https://www.facebook.com/nishu4" class="social-link" title="Facebook">📘</a>
+                    </div>
+                    <p style="color: #64748b; font-size: 0.9rem;">
+                        © 2025 Nishant PDF Pro. All rights reserved.<br>
+                        Contact: +91 99608 03311 (WhatsApp/Telegram)
+                    </p>
+                </div>
+            </footer>
         </div>
-
+        
+        <!-- INDIVIDUAL TOOL SECTIONS (Functional Ones) -->
+        
+        <!-- MERGE TOOL -->
+        <div class="tool-section" id="tool-merge">
+            <div class="tool-header">
+                <h3>📑 Merge PDF</h3>
+                <p>Combine multiple PDFs into one document</p>
+            </div>
+            <div class="upload-box" onclick="document.getElementById('mergeInput').click()">
+                <h2>📂 Select Multiple PDFs</h2>
+                <p>Drag & drop or click to browse</p>
+                <input type="file" id="mergeInput" multiple accept=".pdf" onchange="handleFiles(this, 'merge')">
+            </div>
+            <center>
+                <button class="btn btn-primary" onclick="processMerge()" id="mergeBtn">Merge Now</button>
+            </center>
+            <div class="progress-container" id="mergeProgress">
+                <div>Merging... <span id="mergeText">0%</span></div>
+                <div class="progress-bar"><div class="progress-fill" id="mergeBar"></div></div>
+            </div>
+            <a href="#" class="back-btn" onclick="showSection('home')">← Back to all tools</a>
+        </div>
+        
+        <!-- COMPRESS TOOL -->
+        <div class="tool-section" id="tool-compress">
+            <div class="tool-header">
+                <h3>🗜️ Compress PDF</h3>
+                <p>Reduce file size while maintaining quality</p>
+            </div>
+            <div class="upload-box" onclick="document.getElementById('compressInput').click()">
+                <h2>📄 Select PDF</h2>
+                <p>Upload file to compress</p>
+                <input type="file" id="compressInput" accept=".pdf" onchange="handleFiles(this, 'compress')">
+            </div>
+            <center>
+                <button class="btn btn-primary" onclick="processCompress()" id="compressBtn">Compress Now</button>
+            </center>
+            <div class="progress-container" id="compressProgress">
+                <div>Compressing... <span id="compressText">0%</span></div>
+                <div class="progress-bar"><div class="progress-fill" id="compressBar"></div></div>
+            </div>
+            <a href="#" class="back-btn" onclick="showSection('home')">← Back to all tools</a>
+        </div>
+        
+        <!-- SPLIT TOOL -->
+        <div class="tool-section" id="tool-split">
+            <div class="tool-header">
+                <h3>✂️ Split PDF</h3>
+                <p>Extract specific pages</p>
+            </div>
+            <div class="upload-box" onclick="document.getElementById('splitInput').click()">
+                <h2>📄 Select PDF</h2>
+                <input type="file" id="splitInput" accept=".pdf" onchange="handleFiles(this, 'split')">
+            </div>
+            <center>
+                <input type="text" id="splitRange" placeholder="e.g., 1-3, 5, 7-9" style="padding: 0.75rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3); color: white; margin: 1rem 0; width: 300px;">
+                <br>
+                <button class="btn btn-primary" onclick="processSplit()" id="splitBtn">Split Now</button>
+            </center>
+            <div class="progress-container" id="splitProgress">
+                <div>Splitting... <span id="splitText">0%</span></div>
+                <div class="progress-bar"><div class="progress-fill" id="splitBar"></div></div>
+            </div>
+            <a href="#" class="back-btn" onclick="showSection('home')">← Back to all tools</a>
+        </div>
+        
+        <!-- UNLOCK TOOL -->
+        <div class="tool-section" id="tool-unlock">
+            <div class="tool-header">
+                <h3>🔓 Unlock PDF</h3>
+                <p>Remove password protection</p>
+            </div>
+            <div class="notice">⚠️ You must know the current password. Illegal cracking is not supported.</div>
+            <div class="upload-box" onclick="document.getElementById('unlockInput').click()">
+                <h2>🔐 Select Locked PDF</h2>
+                <input type="file" id="unlockInput" accept=".pdf" onchange="handleFiles(this, 'unlock')">
+            </div>
+            <center>
+                <input type="password" id="unlockPass" placeholder="Enter current password" style="padding: 0.75rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3); color: white; margin: 1rem 0; width: 300px;">
+                <br>
+                <button class="btn btn-primary" onclick="processUnlock()" id="unlockBtn">Unlock Now</button>
+            </center>
+            <div class="progress-container" id="unlockProgress">
+                <div>Unlocking... <span id="unlockText">0%</span></div>
+                <div class="progress-bar"><div class="progress-fill" id="unlockBar"></div></div>
+            </div>
+            <a href="#" class="back-btn" onclick="showSection('home')">← Back to all tools</a>
+        </div>
+        
+        <!-- ROTATE TOOL -->
+        <div class="tool-section" id="tool-rotate">
+            <div class="tool-header">
+                <h3>🔄 Rotate PDF</h3>
+                <p>Change page orientation</p>
+            </div>
+            <div class="upload-box" onclick="document.getElementById('rotateInput').click()">
+                <h2>📄 Select PDF</h2>
+                <input type="file" id="rotateInput" accept=".pdf" onchange="handleFiles(this, 'rotate')">
+            </div>
+            <center>
+                <select id="rotateAngle" style="padding: 0.75rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3); color: white; margin: 1rem 0; width: 300px;">
+                    <option value="90">90° Clockwise</option>
+                    <option value="180">180°</option>
+                    <option value="270">270° Counter-clockwise</option>
+                </select>
+                <br>
+                <button class="btn btn-primary" onclick="processRotate()" id="rotateBtn">Rotate Now</button>
+            </center>
+            <div class="progress-container" id="rotateProgress">
+                <div>Rotating... <span id="rotateText">0%</span></div>
+                <div class="progress-bar"><div class="progress-fill" id="rotateBar"></div></div>
+            </div>
+            <a href="#" class="back-btn" onclick="showSection('home')">← Back to all tools</a>
+        </div>
+        
+        <!-- PROTECT TOOL -->
+        <div class="tool-section" id="tool-protect">
+            <div class="tool-header">
+                <h3>🛡️ Protect PDF</h3>
+                <p>Add password protection</p>
+            </div>
+            <div class="upload-box" onclick="document.getElementById('protectInput').click()">
+                <h2>📄 Select PDF</h2>
+                <input type="file" id="protectInput" accept=".pdf" onchange="handleFiles(this, 'protect')">
+            </div>
+            <center>
+                <input type="password" id="protectPass" placeholder="Set new password" style="padding: 0.75rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3); color: white; margin: 1rem 0; width: 300px;">
+                <br>
+                <input type="password" id="protectConfirm" placeholder="Confirm password" style="padding: 0.75rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3); color: white; margin: 1rem 0; width: 300px;">
+                <br>
+                <button class="btn btn-primary" onclick="processProtect()" id="protectBtn">Protect Now</button>
+            </center>
+            <div class="progress-container" id="protectProgress">
+                <div>Protecting... <span id="protectText">0%</span></div>
+                <div class="progress-bar"><div class="progress-fill" id="protectBar"></div></div>
+            </div>
+            <a href="#" class="back-btn" onclick="showSection('home')">← Back to all tools</a>
+        </div>
+        
+        <!-- REMOVE PAGES TOOL -->
+        <div class="tool-section" id="tool-remove">
+            <div class="tool-header">
+                <h3>🗑️ Remove Pages</h3>
+                <p>Delete specific pages</p>
+            </div>
+            <div class="upload-box" onclick="document.getElementById('removeInput').click()">
+                <h2>📄 Select PDF</h2>
+                <input type="file" id="removeInput" accept=".pdf" onchange="handleFiles(this, 'remove')">
+            </div>
+            <center>
+                <input type="text" id="removeRange" placeholder="Pages to delete (e.g., 2, 4-6)" style="padding: 0.75rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3); color: white; margin: 1rem 0; width: 300px;">
+                <br>
+                <button class="btn btn-primary" onclick="processRemove()" id="removeBtn">Remove Now</button>
+            </center>
+            <div class="progress-container" id="removeProgress">
+                <div>Processing... <span id="removeText">0%</span></div>
+                <div class="progress-bar"><div class="progress-fill" id="removeBar"></div></div>
+            </div>
+            <a href="#" class="back-btn" onclick="showSection('home')">← Back to all tools</a>
+        </div>
+        
+        <!-- COMING SOON / API NEEDED TOOLS -->
+        <div class="tool-section" id="tool-soon">
+            <div class="tool-header">
+                <h3>🚀 Coming Soon</h3>
+                <p>This feature requires server-side processing</p>
+            </div>
+            <div class="notice info" style="text-align: center; padding: 3rem;">
+                <h2>⚡ Advanced Feature</h2>
+                <p style="margin: 1rem 0;">This tool requires backend server or third-party API (like ilovepdf API, pdf.co, or Adobe API) which involves costs and server setup.</p>
+                <p>Free browser-based tools can only do: Merge, Split, Rotate, Compress (basic), Lock/Unlock.</p>
+                <p style="margin-top: 2rem; font-weight: 600; color: var(--accent);">Contact Nishant to upgrade this tool:</p>
+                <p>📱 WhatsApp: +91 99608 03311</p>
+            </div>
+            <center>
+                <a href="#" class="back-btn" onclick="showSection('home')">← Back to all tools</a>
+            </center>
+        </div>
+        
     </div>
-
+    
     <script>
         // Navigation
-        function showSection(sectionId) {
-            document.querySelectorAll('.section').forEach(section => {
-                section.classList.remove('active');
-            });
-            
-            const target = document.getElementById(sectionId);
-            if (target) {
-                target.classList.add('active');
-                window.scrollTo(0, 0);
-            }
-            
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active');
-                if(link.getAttribute('onclick') && link.getAttribute('onclick').includes(sectionId)) {
-                    link.classList.add('active');
-                }
-            });
+        function showSection(id) {
+            document.querySelectorAll('.tool-section').forEach(s => s.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            window.scrollTo(0, 0);
         }
         
-        // File Display
-        function showFiles(input, displayId) {
-            const display = document.getElementById(displayId);
+        function showTool(toolId) {
+            const functionalTools = ['merge', 'compress', 'split', 'unlock', 'rotate', 'remove', 'protect'];
+            
+            if (functionalTools.includes(toolId)) {
+                showSection('tool-' + toolId);
+            } else {
+                showSection('tool-soon');
+            }
+        }
+        
+        // File handling
+        function handleFiles(input, type) {
             if (input.files.length > 0) {
                 const names = Array.from(input.files).map(f => f.name).join(', ');
-                display.innerHTML = `✅ Selected: ${names}`;
+                alert('Selected: ' + names);
             }
         }
         
-        // Progress Update
-        function updateProgress(barId, percent) {
+        // Progress updater
+        function updateProgress(barId, textId, percent) {
             document.getElementById(barId).style.width = percent + '%';
-            document.getElementById(barId).textContent = percent + '%';
+            if (textId) document.getElementById(textId).textContent = percent + '%';
         }
         
-        // MERGE PDF
+        // MERGE
         async function processMerge() {
             const input = document.getElementById('mergeInput');
-            const btn = document.getElementById('mergeBtn');
-            const progress = document.getElementById('mergeProgress');
-            
             if (input.files.length < 2) {
-                alert('⚠️ Select at least 2 PDF files!');
+                alert('Please select at least 2 PDFs');
                 return;
             }
             
-            btn.disabled = true;
-            progress.style.display = 'block';
+            document.getElementById('mergeBtn').disabled = true;
+            document.getElementById('mergeProgress').style.display = 'block';
             
             try {
                 const { PDFDocument } = PDFLib;
-                const mergedDoc = await PDFDocument.create();
+                const merged = await PDFDocument.create();
                 
                 for (let i = 0; i < input.files.length; i++) {
-                    updateProgress('mergeBar', Math.round((i / input.files.length) * 80));
+                    updateProgress('mergeBar', 'mergeText', Math.round((i / input.files.length) * 90));
                     const bytes = await input.files[i].arrayBuffer();
                     const pdf = await PDFDocument.load(bytes);
-                    const pages = await mergedDoc.copyPages(pdf, pdf.getPageIndices());
-                    pages.forEach(p => mergedDoc.addPage(p));
+                    const pages = await merged.copyPages(pdf, pdf.getPageIndices());
+                    pages.forEach(p => merged.addPage(p));
                 }
                 
-                updateProgress('mergeBar', 95);
-                const mergedBytes = await mergedDoc.save();
-                download(mergedBytes, 'nishant-merged.pdf', 'application/pdf');
-                
+                const bytes = await merged.save();
+                download(bytes, 'nishant-merged.pdf', 'application/pdf');
                 alert('✅ Merged successfully!');
-                updateProgress('mergeBar', 100);
+                updateProgress('mergeBar', 'mergeText', 100);
                 
             } catch (err) {
-                alert('❌ Error: ' + err.message);
+                alert('Error: ' + err.message);
             } finally {
                 setTimeout(() => {
-                    btn.disabled = false;
-                    progress.style.display = 'none';
-                    updateProgress('mergeBar', 0);
+                    document.getElementById('mergeBtn').disabled = false;
+                    document.getElementById('mergeProgress').style.display = 'none';
                 }, 2000);
             }
         }
         
-        // UNLOCK PDF
-        async function processUnlock() {
-            const input = document.getElementById('unlockInput');
-            const password = document.getElementById('pdfPass').value;
-            const btn = document.getElementById('unlockBtn');
-            const progress = document.getElementById('unlockProgress');
-            
-            if (!input.files[0] || !password) {
-                alert('⚠️ Please select file and enter password!');
-                return;
-            }
-            
-            btn.disabled = true;
-            progress.style.display = 'block';
-            
-            try {
-                updateProgress('unlockBar', 30);
-                const { PDFDocument } = PDFLib;
-                const bytes = await input.files[0].arrayBuffer();
-                
-                let pdf;
-                try {
-                    pdf = await PDFDocument.load(bytes, { password: password });
-                } catch (e) {
-                    throw new Error('Wrong password!');
-                }
-                
-                updateProgress('unlockBar', 70);
-                const unlockedBytes = await pdf.save();
-                download(unlockedBytes, 'nishant-unlocked.pdf', 'application/pdf');
-                
-                alert('✅ Unlocked successfully!');
-                updateProgress('unlockBar', 100);
-                
-            } catch (err) {
-                alert('❌ Error: ' + err.message);
-            } finally {
-                setTimeout(() => {
-                    btn.disabled = false;
-                    progress.style.display = 'none';
-                    updateProgress('unlockBar', 0);
-                }, 2000);
-            }
-        }
-        
-        // COMPRESS PDF
+        // COMPRESS
         async function processCompress() {
             const input = document.getElementById('compressInput');
-            const btn = document.getElementById('compressBtn');
-            const progress = document.getElementById('compressProgress');
-            
             if (!input.files[0]) {
-                alert('⚠️ Please select a file!');
+                alert('Please select a PDF');
                 return;
             }
             
-            btn.disabled = true;
-            progress.style.display = 'block';
+            document.getElementById('compressBtn').disabled = true;
+            document.getElementById('compressProgress').style.display = 'block';
             
             try {
-                updateProgress('compressBar', 20);
                 const { PDFDocument } = PDFLib;
                 const bytes = await input.files[0].arrayBuffer();
                 const pdf = await PDFDocument.load(bytes);
                 
-                // Remove metadata for compression
+                // Clear metadata for compression
                 pdf.setTitle('');
                 pdf.setAuthor('');
                 pdf.setSubject('');
@@ -1246,84 +1088,160 @@
                 pdf.setProducer('');
                 pdf.setCreator('');
                 
-                updateProgress('compressBar', 80);
-                const compressedBytes = await pdf.save({ useObjectStreams: true });
-                download(compressedBytes, 'nishant-compressed.pdf', 'application/pdf');
-                
+                const compressed = await pdf.save({ useObjectStreams: true });
+                download(compressed, 'nishant-compressed.pdf', 'application/pdf');
                 alert('✅ Compressed successfully!');
-                updateProgress('compressBar', 100);
+                updateProgress('compressBar', 'compressText', 100);
                 
             } catch (err) {
-                alert('❌ Error: ' + err.message);
+                alert('Error: ' + err.message);
             } finally {
                 setTimeout(() => {
-                    btn.disabled = false;
-                    progress.style.display = 'none';
-                    updateProgress('compressBar', 0);
+                    document.getElementById('compressBtn').disabled = false;
+                    document.getElementById('compressProgress').style.display = 'none';
                 }, 2000);
             }
         }
         
-        // SPLIT PDF
+        // SPLIT
         async function processSplit() {
             const input = document.getElementById('splitInput');
-            const rangeStr = document.getElementById('splitRange').value;
-            const btn = document.getElementById('splitBtn');
-            const progress = document.getElementById('splitProgress');
+            const range = document.getElementById('splitRange').value;
             
-            if (!input.files[0] || !rangeStr) {
-                alert('⚠️ Please select file and specify pages!');
+            if (!input.files[0] || !range) {
+                alert('Please select PDF and enter page range');
                 return;
             }
             
-            btn.disabled = true;
-            progress.style.display = 'block';
+            document.getElementById('splitBtn').disabled = true;
+            document.getElementById('splitProgress').style.display = 'block';
             
             try {
                 const { PDFDocument } = PDFLib;
                 const bytes = await input.files[0].arrayBuffer();
                 const pdf = await PDFDocument.load(bytes);
-                const newDoc = await PDFDocument.create();
+                const newPdf = await PDFDocument.create();
                 
-                const pagesToExtract = parseRange(rangeStr, pdf.getPageCount());
+                const pagesToExtract = parseRange(range, pdf.getPageCount());
                 
                 for (let i = 0; i < pagesToExtract.length; i++) {
-                    updateProgress('splitBar', Math.round(((i + 1) / pagesToExtract.length) * 90));
-                    const [page] = await newDoc.copyPages(pdf, [pagesToExtract[i]]);
-                    newDoc.addPage(page);
+                    updateProgress('splitBar', 'splitText', Math.round(((i + 1) / pagesToExtract.length) * 90));
+                    const [page] = await newPdf.copyPages(pdf, [pagesToExtract[i]]);
+                    newPdf.addPage(page);
                 }
                 
-                const splitBytes = await newDoc.save();
-                download(splitBytes, 'nishant-split.pdf', 'application/pdf');
-                
-                alert(`✅ Extracted ${pagesToExtract.length} pages!`);
-                updateProgress('splitBar', 100);
+                const bytes_out = await newPdf.save();
+                download(bytes_out, 'nishant-split.pdf', 'application/pdf');
+                alert('✅ Split successfully!');
+                updateProgress('splitBar', 'splitText', 100);
                 
             } catch (err) {
-                alert('❌ Error: ' + err.message);
+                alert('Error: ' + err.message);
             } finally {
                 setTimeout(() => {
-                    btn.disabled = false;
-                    progress.style.display = 'none';
-                    updateProgress('splitBar', 0);
+                    document.getElementById('splitBtn').disabled = false;
+                    document.getElementById('splitProgress').style.display = 'none';
                 }, 2000);
             }
         }
         
-        // ROTATE PDF
-        async function processRotate() {
-            const input = document.getElementById('rotateInput');
-            const angle = parseInt(document.getElementById('rotateAngle').value);
-            const btn = document.getElementById('rotateBtn');
-            const progress = document.getElementById('rotateProgress');
+        // UNLOCK
+        async function processUnlock() {
+            const input = document.getElementById('unlockInput');
+            const pass = document.getElementById('unlockPass').value;
             
-            if (!input.files[0]) {
-                alert('⚠️ Please select a file!');
+            if (!input.files[0] || !pass) {
+                alert('Please select PDF and enter password');
                 return;
             }
             
-            btn.disabled = true;
-            progress.style.display = 'block';
+            document.getElementById('unlockBtn').disabled = true;
+            document.getElementById('unlockProgress').style.display = 'block';
+            
+            try {
+                const { PDFDocument } = PDFLib;
+                const bytes = await input.files[0].arrayBuffer();
+                
+                let pdf;
+                try {
+                    pdf = await PDFDocument.load(bytes, { password: pass });
+                } catch (e) {
+                    throw new Error('Wrong password!');
+                }
+                
+                const unlocked = await pdf.save();
+                download(unlocked, 'nishant-unlocked.pdf', 'application/pdf');
+                alert('✅ Unlocked successfully!');
+                updateProgress('unlockBar', 'unlockText', 100);
+                
+            } catch (err) {
+                alert('Error: ' + err.message);
+            } finally {
+                setTimeout(() => {
+                    document.getElementById('unlockBtn').disabled = false;
+                    document.getElementById('unlockProgress').style.display = 'none';
+                }, 2000);
+            }
+        }
+        
+        // PROTECT (Add Password)
+        async function processProtect() {
+            const input = document.getElementById('protectInput');
+            const pass = document.getElementById('protectPass').value;
+            const confirm = document.getElementById('protectConfirm').value;
+            
+            if (!input.files[0]) {
+                alert('Please select a PDF');
+                return;
+            }
+            
+            if (pass !== confirm) {
+                alert('Passwords do not match!');
+                return;
+            }
+            
+            if (!pass) {
+                alert('Please enter a password');
+                return;
+            }
+            
+            document.getElementById('protectBtn').disabled = true;
+            document.getElementById('protectProgress').style.display = 'block';
+            
+            try {
+                const { PDFDocument } = PDFLib;
+                const bytes = await input.files[0].arrayBuffer();
+                const pdf = await PDFDocument.load(bytes);
+                
+                // Note: pdf-lib doesn't support adding passwords in browser
+                // This is a placeholder showing how it would work with a backend
+                document.getElementById('protectBar').style.width = '50%';
+                
+                // For now, just download unprotected with alert
+                alert('⚠️ Note: Adding password requires server-side processing.\n\nThis feature will be available soon.\nContact: nishant@example.com');
+                
+            } catch (err) {
+                alert('Error: ' + err.message);
+            } finally {
+                setTimeout(() => {
+                    document.getElementById('protectBtn').disabled = false;
+                    document.getElementById('protectProgress').style.display = 'none';
+                }, 2000);
+            }
+        }
+        
+        // ROTATE
+        async function processRotate() {
+            const input = document.getElementById('rotateInput');
+            const angle = parseInt(document.getElementById('rotateAngle').value);
+            
+            if (!input.files[0]) {
+                alert('Please select a PDF');
+                return;
+            }
+            
+            document.getElementById('rotateBtn').disabled = true;
+            document.getElementById('rotateProgress').style.display = 'block';
             
             try {
                 const { PDFDocument, degrees } = PDFLib;
@@ -1332,23 +1250,21 @@
                 
                 const pages = pdf.getPages();
                 for (let i = 0; i < pages.length; i++) {
-                    updateProgress('rotateBar', Math.round(((i + 1) / pages.length) * 90));
+                    updateProgress('rotateBar', 'rotateText', Math.round(((i + 1) / pages.length) * 90));
                     pages[i].setRotation(degrees(angle));
                 }
                 
-                const rotatedBytes = await pdf.save();
-                download(rotatedBytes, `nishant-rotated-${angle}.pdf`, 'application/pdf');
-                
+                const rotated = await pdf.save();
+                download(rotated, `nishant-rotated-${angle}.pdf`, 'application/pdf');
                 alert('✅ Rotated successfully!');
-                updateProgress('rotateBar', 100);
+                updateProgress('rotateBar', 'rotateText', 100);
                 
             } catch (err) {
-                alert('❌ Error: ' + err.message);
+                alert('Error: ' + err.message);
             } finally {
                 setTimeout(() => {
-                    btn.disabled = false;
-                    progress.style.display = 'none';
-                    updateProgress('rotateBar', 0);
+                    document.getElementById('rotateBtn').disabled = false;
+                    document.getElementById('rotateProgress').style.display = 'none';
                 }, 2000);
             }
         }
@@ -1356,85 +1272,62 @@
         // REMOVE PAGES
         async function processRemove() {
             const input = document.getElementById('removeInput');
-            const rangeStr = document.getElementById('removeRange').value;
-            const btn = document.getElementById('removeBtn');
-            const progress = document.getElementById('removeProgress');
+            const range = document.getElementById('removeRange').value;
             
-            if (!input.files[0] || !rangeStr) {
-                alert('⚠️ Please select file and specify pages to remove!');
+            if (!input.files[0] || !range) {
+                alert('Please select PDF and enter pages to remove');
                 return;
             }
             
-            btn.disabled = true;
-            progress.style.display = 'block';
+            document.getElementById('removeBtn').disabled = true;
+            document.getElementById('removeProgress').style.display = 'block';
             
             try {
                 const { PDFDocument } = PDFLib;
                 const bytes = await input.files[0].arrayBuffer();
                 const pdf = await PDFDocument.load(bytes);
-                const newDoc = await PDFDocument.create();
+                const newPdf = await PDFDocument.create();
                 
-                const pagesToRemove = parseRange(rangeStr, pdf.getPageCount());
+                const toRemove = parseRange(range, pdf.getPageCount());
                 const allPages = Array.from({length: pdf.getPageCount()}, (_, i) => i);
-                const pagesToKeep = allPages.filter(p => !pagesToRemove.includes(p));
+                const toKeep = allPages.filter(p => !toRemove.includes(p));
                 
-                for (let i = 0; i < pagesToKeep.length; i++) {
-                    updateProgress('removeBar', Math.round(((i + 1) / pagesToKeep.length) * 90));
-                    const [page] = await newDoc.copyPages(pdf, [pagesToKeep[i]]);
-                    newDoc.addPage(page);
+                for (let i = 0; i < toKeep.length; i++) {
+                    updateProgress('removeBar', 'removeText', Math.round(((i + 1) / toKeep.length) * 90));
+                    const [page] = await newPdf.copyPages(pdf, [toKeep[i]]);
+                    newPdf.addPage(page);
                 }
                 
-                const modifiedBytes = await newDoc.save();
-                download(modifiedBytes, 'nishant-modified.pdf', 'application/pdf');
-                
-                alert(`✅ Removed ${pagesToRemove.length} pages!`);
-                updateProgress('removeBar', 100);
+                const bytes_out = await newPdf.save();
+                download(bytes_out, 'nishant-removed.pdf', 'application/pdf');
+                alert(`✅ Removed ${toRemove.length} pages!`);
+                updateProgress('removeBar', 'removeText', 100);
                 
             } catch (err) {
-                alert('❌ Error: ' + err.message);
+                alert('Error: ' + err.message);
             } finally {
                 setTimeout(() => {
-                    btn.disabled = false;
-                    progress.style.display = 'none';
-                    updateProgress('removeBar', 0);
+                    document.getElementById('removeBtn').disabled = false;
+                    document.getElementById('removeProgress').style.display = 'none';
                 }, 2000);
             }
         }
         
-        // Helper: Parse Page Range
-        function parseRange(rangeStr, maxPages) {
+        // Parse range helper
+        function parseRange(str, max) {
             const pages = new Set();
-            const parts = rangeStr.split(',');
-            
-            parts.forEach(part => {
+            str.split(',').forEach(part => {
                 part = part.trim();
                 if (part.includes('-')) {
-                    const [start, end] = part.split('-').map(Number);
-                    for (let i = start; i <= end; i++) {
-                        if (i >= 1 && i <= maxPages) pages.add(i - 1);
-                    }
+                    const [s, e] = part.split('-').map(Number);
+                    for (let i = s; i <= e; i++) if (i >= 1 && i <= max) pages.add(i - 1);
                 } else {
-                    const num = parseInt(part);
-                    if (num >= 1 && num <= maxPages) pages.add(num - 1);
+                    const n = parseInt(part);
+                    if (n >= 1 && n <= max) pages.add(n - 1);
                 }
             });
-            
             return Array.from(pages).sort((a, b) => a - b);
         }
-        
-        // Particle Animation
-        function createParticle() {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 5 + 's';
-            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
-            document.body.appendChild(particle);
-            
-            setTimeout(() => particle.remove(), 20000);
-        }
-        
-        setInterval(createParticle, 3000);
     </script>
 </body>
 </html>
